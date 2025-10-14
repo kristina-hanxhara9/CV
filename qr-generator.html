@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator for CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #7b68ee;
+            margin-bottom: 30px;
+        }
+
+        .qr-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .qr-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .qr-section p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        #qrcode1, #qrcode2 {
+            display: inline-block;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #7b68ee 0%, #9a7ee8 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(123, 104, 238, 0.4);
+        }
+
+        .info {
+            background: #e8e4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .info h3 {
+            color: #7b68ee;
+            margin-bottom: 15px;
+        }
+
+        .info ul {
+            list-style-position: inside;
+            color: #555;
+        }
+
+        .info li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 QR Codes for Your CV</h1>
+
+        <div class="qr-section">
+            <h2>🌐 Website QR Code</h2>
+            <p>Scan to visit Kristina's portfolio website</p>
+            <div id="qrcode1"></div>
+            <br>
+            <button class="download-btn" onclick="downloadQR('qrcode1', 'Website-QR-Code.png')">Download Website QR</button>
+        </div>
+
+        <div class="qr-section">
+            <h2>💬 Chatbot QR Code</h2>
+            <p>Scan to chat with Kristina's AI Assistant</p>
+            <div id="qrcode2"></div>
+            <br>
+            <button class="download-btn" onclick="downloadQR('qrcode2', 'Chatbot-QR-Code.png')">Download Chatbot QR</button>
+        </div>
+
+        <div class="info">
+            <h3>📋 How to Use These QR Codes:</h3>
+            <ul>
+                <li>Download both QR codes using the buttons above</li>
+                <li>Add them to your CV in the designated areas</li>
+                <li>Website QR: Links to your full portfolio</li>
+                <li>Chatbot QR: Links directly to your AI assistant chat</li>
+                <li>Test them with your phone before printing!</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        // Generate QR Code for Website
+        new QRCode(document.getElementById("qrcode1"), {
+            text: "https://yourusername.github.io/KristinaCV/",  // Replace with your actual website URL
+            width: 200,
+            height: 200,
+            colorDark: "#7b68ee",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        // Generate QR Code for Chatbot
+        new QRCode(document.getElementById("qrcode2"), {
+            text: "https://yourusername.github.io/KristinaCV/chatbot.html",  // Replace with your actual chatbot URL
+            width: 200,
+            height: 200,
+            colorDark: "#00bfb3",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        function downloadQR(elementId, filename) {
+            const qrCanvas = document.querySelector(`#${elementId} canvas`);
+            if (qrCanvas) {
+                const url = qrCanvas.toDataURL("image/png");
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = url;
+                link.click();
+            }
+        }
+    </script>
+</body>
+</html>

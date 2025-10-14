@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kristina Hanxhara - CV</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .cv-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Header */
+        .cv-header {
+            background: linear-gradient(135deg, #7b68ee 0%, #9a7ee8 100%);
+            color: white;
+            padding: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .cv-header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .cv-header .title {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+
+        .contact-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            font-size: 14px;
+        }
+
+        .contact-bar span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* QR Codes in Header */
+        .qr-codes-header {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .qr-code-box {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .qr-placeholder-small {
+            width: 80px;
+            height: 80px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            color: #7b68ee;
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .qr-label-small {
+            font-size: 9px;
+            color: #7b68ee;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .cv-content {
+            padding: 40px 50px;
+        }
+
+        .cv-section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            color: #7b68ee;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e8e4ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-text {
+            line-height: 1.8;
+            color: #333;
+            text-align: justify;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .skill-group {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #7b68ee;
+        }
+
+        .skill-group h3 {
+            color: #7b68ee;
+            font-size: 16px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .skill-group ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-group li {
+            padding: 5px 0;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .skill-group li::before {
+            content: "▸ ";
+            color: #7b68ee;
+            font-weight: bold;
+        }
+
+        /* Portfolio */
+        .portfolio-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #00bfb3;
+        }
+
+        .portfolio-item h3 {
+            color: #00bfb3;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .portfolio-item p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .portfolio-link {
+            color: #00bfb3;
+            font-weight: 600;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .experience-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .experience-company {
+            font-size: 15px;
+            color: #7b68ee;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .experience-date {
+            background: #e8e4ff;
+            color: #7b68ee;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .experience-description ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .experience-description li {
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Education */
+        .education-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ff6b9d;
+        }
+
+        .education-item h3 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .education-item .degree {
+            color: #ff6b9d;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .education-item .date {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .education-item ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .education-item li {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .cv-container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+
+            .print-button {
+                display: none;
+            }
+        }
+
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #7b68ee, #9a7ee8);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(123, 104, 238, 0.3);
+            z-index: 1000;
+        }
+
+        .print-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Icons using text */
+        .icon {
+            display: inline-block;
+            width: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print CV</button>
+
+    <div class="cv-container">
+        <!-- Header -->
+        <div class="cv-header">
+            <!-- QR Codes -->
+            <div class="qr-codes-header">
+                <div class="qr-code-box">
+                    <div class="qr-placeholder-small">WEBSITE<br>QR</div>
+                    <div class="qr-label-small">Portfolio</div>
+                </div>
+                <div class="qr-code-box">
+                    <div class="qr-placeholder-small">CHATBOT<br>QR</div>
+                    <div class="qr-label-small">AI Chat</div>
+                </div>
+            </div>
+
+            <h1>KRISTINA HANXHARA</h1>
+            <div class="title">AI Expert & Chatbot Developer</div>
+            <div class="contact-bar">
+                <span>📍 London, UK</span>
+                <span>📧 kristinazhi97@gmail.com</span>
+                <span>📱 07497391831</span>
+                <span>🔗 LinkedIn</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="cv-content">
+            <!-- Professional Profile -->
+            <div class="cv-section">
+                <div class="section-title">👤 PROFESSIONAL PROFILE</div>
+                <p class="profile-text">
+                    AI enthusiast focused on developing intelligent chatbots and automation solutions that transform 
+                    businesses. Currently enhancing my expertise through a Master's in Data Science and AI at the 
+                    University of Liverpool. I create practical AI implementations using Google APIs and OpenAI APIs, 
+                    with a focus on developing custom solutions that deliver measurable business value. Multilingual 
+                    professional (Albanian, German, Spanish) with full-stack development skills for creating integrated 
+                    AI systems.
+                </p>
+            </div>
+
+            <!-- Core Expertise -->
+            <div class="cv-section">
+                <div class="section-title">🚀 CORE EXPERTISE</div>
+                <div class="skills-container">
+                    <div class="skill-group">
+                        <h3>AI Development</h3>
+                        <ul>
+                            <li>Chatbots & Virtual Assistants</li>
+                            <li>Automation Tools</li>
+                            <li>AI-Powered Websites</li>
+                            <li>OpenAI API Integration</li>
+                            <li>Google APIs Integration</li>
+                            <li>Computer Vision (OpenCV)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Technical Skills</h3>
+                        <ul>
+                            <li>Python Programming</li>
+                            <li>HTML, CSS, JavaScript</li>
+                            <li>SQL & MySQL</li>
+                            <li>API Development</li>
+                            <li>Website Development</li>
+                            <li>Data Analysis</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Implementation Areas</h3>
+                        <ul>
+                            <li>Customer Service Automation</li>
+                            <li>Content Generation</li>
+                            <li>Data Analysis Assistance</li>
+                            <li>Telegram Bots</li>
+                            <li>Website Widgets</li>
+                            <li>Web Applications</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Languages</h3>
+                        <ul>
+                            <li>Albanian (Native)</li>
+                            <li>English (Fluent)</li>
+                            <li>German (Fluent)</li>
+                            <li>Spanish (Fluent)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Highlights -->
+            <div class="cv-section">
+                <div class="section-title">💼 PORTFOLIO HIGHLIGHTS</div>
+                
+                <div class="portfolio-item">
+                    <h3>Vila Falo Resort Website</h3>
+                    <p>
+                        Complete business website for a luxury mountain resort in Albania. Features multilingual content, 
+                        booking system, restaurant menus, and responsive design. Developed using Python, JavaScript, 
+                        HTML/CSS, and deployed on Heroku.
+                    </p>
+                    <a href="http://www.vilafalo.com/" class="portfolio-link">🔗 www.vilafalo.com</a>
+                </div>
+
+                <div class="portfolio-item">
+                    <h3>AI Assistant Chatbot</h3>
+                    <p>
+                        Intelligent assistant using Google Gemini API that answers questions about professional experience, 
+                        skills, and availability. Integrated into website and available as standalone application. 
+                        Demonstrates advanced NLP and conversational AI capabilities.
+                    </p>
+                </div>
+
+                <div class="portfolio-item">
+                    <h3>Customer Service Chatbot</h3>
+                    <p>
+                        Developed a website chatbot that answers common customer questions, reducing email inquiries by 40%. 
+                        Implemented using OpenAI API with multilingual support and seamless website integration.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Professional Experience -->
+            <div class="cv-section">
+                <div class="section-title">💼 PROFESSIONAL EXPERIENCE</div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Panel Quality Principal Analyst</div>
+                            <div class="experience-company">GfK, London</div>
+                        </div>
+                        <div class="experience-date">Sep 2022 – Present</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Design and monitor representative samples for retail analysis, ensuring data quality</li>
+                            <li>Collaborate with cross-functional teams to track KPIs and resolve data quality issues</li>
+                            <li>Deliver actionable insights by analyzing retail data, contributing to strategic decision-making</li>
+                            <li>Implement data quality monitoring systems to improve analysis reliability</li>
+                            <li>Create visual dashboards that make complex data accessible to stakeholders</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Recruitment Consultant and Payroll Admin</div>
+                            <div class="experience-company">Team Support, London</div>
+                        </div>
+                        <div class="experience-date">May 2021 – Jun 2022</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Managed recruitment databases, ensuring accurate and up-to-date candidate information</li>
+                            <li>Sourced and analyzed candidate data to meet requirement quotas</li>
+                            <li>Coordinated with teams to meet recruitment quotas in fast-paced environments</li>
+                            <li>Used data management techniques to improve workflow efficiency</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Market Research Interviewer</div>
+                            <div class="experience-company">GfK, Tirana</div>
+                        </div>
+                        <div class="experience-date">May 2017 – Sep 2018</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Conducted interviews and surveys in the German language, ensuring data collection accuracy</li>
+                            <li>Delivered on-time project completion while balancing multiple priorities</li>
+                            <li>Maintained high standards of data quality throughout research processes</li>
+                            <li>Contributed to multilingual research initiatives with consistent quality</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="cv-section">
+                <div class="section-title">🎓 EDUCATION</div>
+                
+                <div class="education-item">
+                    <h3>Master of Science, Data Science and Artificial Intelligence</h3>
+                    <div class="degree">University of Liverpool</div>
+                    <div class="date">April 2024 – Present</div>
+                    <ul>
+                        <li>Focus on practical applications of AI, including chatbot development and automated systems</li>
+                        <li>Developing skills in Python programming, API integration, and web-based AI solutions</li>
+                    </ul>
+                </div>
+
+                <div class="education-item">
+                    <h3>Bachelor's in Business Informatics (with High Honors)</h3>
+                    <div class="degree">University of Korca "Fan Noli", Albania</div>
+                    <div class="date">October 2018 – October 2021</div>
+                    <ul>
+                        <li>Thesis: "Web Technologies for Business Automation"</li>
+                        <li>Graduated top of class with focus on applying technology to business challenges</li>
+                    </ul>
+                </div>
+
+                <div class="education-item">
+                    <h3>Technical Certifications</h3>
+                    <ul>
+                        <li>Front-End Development (HTML, CSS, JavaScript) – ATC, Albania</li>
+                        <li>Finance 5, AlphaWeb – TCT, Albania</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Why Choose Me -->
+            <div class="cv-section">
+                <div class="section-title">⭐ WHY I'M THE RIGHT AI EXPERT FOR YOUR BUSINESS</div>
+                <p class="profile-text">
+                    I'm passionate about creating practical AI solutions that deliver real business value. My approach 
+                    combines solid technical skills (Python, APIs, web development) with a focus on user experience and 
+                    business outcomes. I build systems that are accessible, useful, and effective—whether that's a 
+                    customer service chatbot, an AI-powered website, or a custom automation tool. With my multilingual 
+                    capabilities and full-stack development skills, I can create comprehensive solutions that work for 
+                    diverse audiences and integrate seamlessly with existing systems.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kristina Hanxhara | AI Consultant & Chatbot Developer</title>
+    <title>Kristina Hanxhara | AI Expert & Chatbot Developer</title>
     <style>
         :root {
             --primary-color: #7b68ee;
@@ -59,6 +59,207 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary-color);
         }
+
+        /* Chatbot Button */
+        .chatbot-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 10px 30px rgba(123, 104, 238, 0.3);
+            transition: all var(--transition-speed);
+            animation: pulse 2s infinite;
+        }
+
+        .chatbot-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(123, 104, 238, 0.4);
+        }
+
+        .chatbot-button i {
+            font-size: 28px;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(123, 104, 238, 0.3);
+            }
+            50% {
+                box-shadow: 0 10px 40px rgba(123, 104, 238, 0.5);
+            }
+        }
+
+        /* Chatbot Container */
+        .chatbot-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 380px;
+            height: 550px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all var(--transition-speed);
+        }
+
+        .chatbot-container.active {
+            display: flex;
+        }
+
+        .chatbot-header {
+            background: var(--gradient-1);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h3 {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chatbot-header .close-btn {
+            cursor: pointer;
+            font-size: 24px;
+            transition: transform var(--transition-speed);
+        }
+
+        .chatbot-header .close-btn:hover {
+            transform: rotate(90deg);
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            padding: 12px 16px;
+            border-radius: 15px;
+            max-width: 80%;
+            word-wrap: break-word;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.bot {
+            background: linear-gradient(135deg, #f5f3ff 0%, #e8e4ff 100%);
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+
+        .message.user {
+            background: var(--gradient-1);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .chatbot-input-area {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #eee;
+            border-radius: 25px;
+            font-size: 14px;
+            outline: none;
+            transition: all var(--transition-speed);
+        }
+
+        .chatbot-input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .chatbot-send-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-speed);
+        }
+
+        .chatbot-send-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(123, 104, 238, 0.3);
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 5px;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #f5f3ff 0%, #e8e4ff 100%);
+            border-radius: 15px;
+            border-bottom-left-radius: 5px;
+            width: fit-content;
+        }
+
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            animation: bounce 1.4s infinite;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
         
         /* Navigation */
         nav {
@@ -67,7 +268,7 @@
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 1000;
+            z-index: 999;
             box-shadow: 0 5px 20px rgba(123, 104, 238, 0.1);
             transition: all var(--transition-speed);
         }
@@ -265,6 +466,8 @@
             box-shadow: var(--box-shadow);
             transition: all var(--transition-speed);
             cursor: pointer;
+            text-decoration: none;
+            color: var(--dark-color);
         }
         
         .contact-item i {
@@ -621,6 +824,40 @@
         .skill-tag:hover::before {
             width: 100%;
         }
+
+        /* Hobbies Section */
+        .hobbies-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hobby-item {
+            background: linear-gradient(135deg, #f5f3ff 0%, #e8e4ff 100%);
+            padding: 12px 20px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark-color);
+            transition: all var(--transition-speed);
+            cursor: default;
+        }
+
+        .hobby-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(123, 104, 238, 0.15);
+        }
+
+        .hobby-item i {
+            font-size: 20px;
+            color: var(--primary-color);
+        }
         
         /* Portfolio Section */
         .portfolio {
@@ -651,6 +888,17 @@
             position: relative;
             overflow: hidden;
             height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portfolio-image svg {
+            width: 80px;
+            height: 80px;
+            fill: white;
+            opacity: 0.9;
         }
         
         .portfolio-image img {
@@ -696,6 +944,7 @@
             transform: translateY(20px);
             opacity: 0;
             transition: all var(--transition-speed) 0.1s;
+            text-decoration: none;
         }
         
         .portfolio-item:hover .portfolio-link {
@@ -1249,6 +1498,7 @@
             background-color: rgba(255, 255, 255, 0.1);
             color: white;
             transition: all var(--transition-speed);
+            text-decoration: none;
         }
         
         .social-icon:hover {
@@ -1319,8 +1569,8 @@
         /* Scroll to top button */
         .scroll-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 100px;
+            right: 110px;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -1407,6 +1657,8 @@
             
             .nav-links {
                 justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
             }
             
             .hero h1 {
@@ -1427,6 +1679,26 @@
             
             .section-title h2 {
                 font-size: 32px;
+            }
+
+            .chatbot-container {
+                width: calc(100% - 20px);
+                height: calc(100vh - 120px);
+                bottom: 10px;
+                right: 10px;
+                border-radius: 15px;
+            }
+
+            .chatbot-button {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+            }
+
+            .scroll-top {
+                bottom: 90px;
+                right: 20px;
             }
         }
         
@@ -1457,6 +1729,10 @@
             .contact-info-container {
                 grid-template-columns: 1fr;
             }
+
+            .contact-info {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -1475,11 +1751,34 @@
         </div>
     </nav>
 
+    <!-- Chatbot Widget -->
+    <div class="chatbot-button" id="chatbotButton">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <h3><i class="fas fa-robot"></i> Ask about Kristina</h3>
+            <span class="close-btn" id="closeChatbot">&times;</span>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot">
+                Hi! I'm Kristina's AI assistant. Ask me about her professional career, availability, education, or how to contact her!
+            </div>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Ask me anything about Kristina...">
+            <button class="chatbot-send-btn" id="chatbotSend">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <span class="hero-subtitle">AI Consultant & Chatbot Developer</span>
+                <span class="hero-subtitle">AI Expert & Chatbot Developer</span>
                 <h1>Creating Intelligent <span>AI Solutions</span></h1>
                 <p class="hero-description">I create practical AI implementations using Python, OpenAI API, Google APIs, and modern web technologies. From multilingual chatbots to full-stack websites, I build solutions that actually make people's lives easier and deliver real business value.</p>
                 
@@ -1488,18 +1787,18 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <span>London, UK</span>
                     </div>
-                    <div class="contact-item">
+                    <a href="tel:+447497391831" class="contact-item">
                         <i class="fas fa-phone"></i>
                         <span>07497391831</span>
-                    </div>
-                    <div class="contact-item">
+                    </a>
+                    <a href="mailto:kristinazhi97@gmail.com" class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <span>kristinazhi97@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
+                    </a>
+                    <a href="https://www.linkedin.com/in/kristina-hanxhara-b41a29223/" target="_blank" class="contact-item">
                         <i class="fab fa-linkedin"></i>
                         <span>LinkedIn</span>
-                    </div>
+                    </a>
                 </div>
                 
                 <div class="cta-buttons">
@@ -1559,7 +1858,48 @@
                 </div>
                 
                 <div class="about-image fadeIn">
-                    <img src="/api/placeholder/500/600" alt="Professional portrait placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" fill="#7b68ee">
+                        <rect x="150" y="100" width="200" height="250" rx="15" fill="#b19cd9" opacity="0.3"/>
+                        <circle cx="250" cy="180" r="50" fill="#7b68ee"/>
+                        <rect x="200" y="250" width="100" height="100" rx="10" fill="#7b68ee"/>
+                        <text x="250" y="480" text-anchor="middle" font-size="20" fill="#7b68ee" font-weight="bold">AI Expert</text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Hobbies & Interests -->
+            <div class="section-title" style="margin-top: 80px;">
+                <span class="section-subtitle">Personal Interests</span>
+                <h2>Beyond Work</h2>
+            </div>
+            <div class="hobbies-container fadeIn">
+                <div class="hobby-item">
+                    <i class="fas fa-book"></i>
+                    <span>Reading</span>
+                </div>
+                <div class="hobby-item">
+                    <i class="fas fa-plane"></i>
+                    <span>Traveling</span>
+                </div>
+                <div class="hobby-item">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Research</span>
+                </div>
+                <div class="hobby-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Business Topics</span>
+                </div>
+                <div class="hobby-item">
+                    <i class="fas fa-rocket"></i>
+                    <span>Startups</span>
+                </div>
+                <div class="hobby-item">
+                    <i class="fas fa-brain"></i>
+                    <span>AI Philosophy</span>
+                </div>
+                <div class="hobby-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Innovation</span>
                 </div>
             </div>
         </div>
@@ -1581,13 +1921,11 @@
             
             <div class="portfolio-container">
                 <div class="portfolio-item fadeIn">
-                    <div class="portfolio-image">
-                        <img src="/api/placeholder/400/320" alt="Vila Falo Resort Website">
-                        <div class="portfolio-overlay">
-                            <a href="https://vila-falo-resort-8208afd24e04.herokuapp.com" target="_blank" class="portfolio-link">
-                                <i class="fas fa-link"></i>
-                            </a>
-                        </div>
+                    <div class="portfolio-image" style="background: linear-gradient(135deg, #00bfb3 0%, #5fd4cb 100%);">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                            <path d="M12 11L7 8v6l5 3 5-3V8l-5 3z" opacity="0.5"/>
+                        </svg>
                     </div>
                     <div class="portfolio-content">
                         <span class="portfolio-category">Full-Stack Website</span>
@@ -1599,17 +1937,17 @@
                             <span class="portfolio-tag">HTML/CSS</span>
                             <span class="portfolio-tag">Heroku</span>
                         </div>
+                        <div style="margin-top: 15px;">
+                            <a href="http://www.vilafalo.com/" target="_blank" style="color: #00bfb3; font-weight: 600; text-decoration: none;">🔗 Visit Website</a>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="portfolio-item fadeIn">
-                    <div class="portfolio-image">
-                        <img src="/api/placeholder/400/320" alt="AI Product Recognition System">
-                        <div class="portfolio-overlay">
-                            <a href="#" class="portfolio-link">
-                                <i class="fas fa-link"></i>
-                            </a>
-                        </div>
+                    <div class="portfolio-image" style="background: linear-gradient(135deg, #ff6b9d 0%, #ffb0ce 100%);">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                        </svg>
                     </div>
                     <div class="portfolio-content">
                         <span class="portfolio-category">Computer Vision</span>
@@ -1624,34 +1962,32 @@
                 </div>
                 
                 <div class="portfolio-item fadeIn">
-                    <div class="portfolio-image">
-                        <img src="/api/placeholder/400/320" alt="Customer Service Chatbot">
-                        <div class="portfolio-overlay">
-                            <a href="#" class="portfolio-link">
-                                <i class="fas fa-link"></i>
-                            </a>
-                        </div>
+                    <div class="portfolio-image" style="background: linear-gradient(135deg, #7b68ee 0%, #b19cd9 100%);">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/>
+                            <circle cx="12" cy="8" r="1.5" opacity="0.5"/>
+                        </svg>
                     </div>
                     <div class="portfolio-content">
                         <span class="portfolio-category">AI Chatbot</span>
-                        <h3 class="portfolio-title">Customer Service Chatbot</h3>
-                        <p class="portfolio-description">Intelligent assistant using OpenAI API that reduced client email inquiries by 40%. Supports multilingual queries and integrates with websites via JavaScript.</p>
+                        <h3 class="portfolio-title">AI Assistant Chatbot</h3>
+                        <p class="portfolio-description">Intelligent assistant using Google Gemini API that answers questions about professional experience, skills, and availability. Try it using the chat button!</p>
                         <div class="portfolio-tags">
-                            <span class="portfolio-tag">OpenAI API</span>
+                            <span class="portfolio-tag">Google Gemini</span>
                             <span class="portfolio-tag">JavaScript</span>
-                            <span class="portfolio-tag">Multilingual</span>
+                            <span class="portfolio-tag">AI</span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <a href="chatbot.html" target="_blank" style="color: #7b68ee; font-weight: 600; text-decoration: none;">🔗 Try Chatbot</a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="portfolio-item fadeIn">
-                    <div class="portfolio-image">
-                        <img src="/api/placeholder/400/320" alt="Business Analytics Dashboard">
-                        <div class="portfolio-overlay">
-                            <a href="#" class="portfolio-link">
-                                <i class="fas fa-link"></i>
-                            </a>
-                        </div>
+                    <div class="portfolio-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                        </svg>
                     </div>
                     <div class="portfolio-content">
                         <span class="portfolio-category">Data Analytics</span>
@@ -1708,7 +2044,7 @@
                             <h3 class="experience-title">Recruitment Consultant and Payroll Admin</h3>
                             <p class="experience-company">Team Support, London</p>
                         </div>
-                        <span class="experience-date">May 2022 – June 2022</span>
+                        <span class="experience-date">May 2021 – June 2022</span>
                     </div>
                     <div class="experience-description">
                         <ul>
@@ -1879,12 +2215,10 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <h3>Kristina Hanxhara</h3>
-                    <p>AI Consultant & Chatbot Developer specializing in creating intelligent solutions that transform businesses and enhance customer experiences.</p>
+                    <p>AI Expert & Chatbot Developer specializing in creating intelligent solutions that transform businesses and enhance customer experiences.</p>
                     <div class="footer-social">
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="https://www.linkedin.com/in/kristina-hanxhara-b41a29223/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:kristinazhi97@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
                 
@@ -1922,34 +2256,202 @@
         fontLink.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap';
         document.head.appendChild(fontLink);
         
-        // Email.js Configuration - Load the library
+        const GEMINI_API_KEY = 'AIzaSyDEUeqE-hBD46f6n9S0oeevGvYPHWLFrPM';
+        const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+
+        const kristinaInfo = {
+            name: "Kristina Hanxhara",
+            title: "AI Expert & Chatbot Developer",
+            location: "London, UK",
+            phone: "07497391831",
+            email: "kristinazhi97@gmail.com",
+            linkedin: "https://www.linkedin.com/in/kristina-hanxhara-b41a29223/",
+            availability: "Available immediately",
+            age: "27 years old",
+            
+            education: {
+                current: "Master of Science in Data Science and Artificial Intelligence at University of Liverpool (April 2024 – Present)",
+                bachelor: "Bachelor's in Business Informatics (with High Honors) from University of Korca 'Fan Noli', Albania (October 2018 – October 2021)",
+                certifications: ["Front-End Development (HTML, CSS, JavaScript)", "Finance 5, AlphaWeb"]
+            },
+            
+            experience: [
+                {
+                    title: "Panel Quality Principal Analyst",
+                    company: "GfK, London",
+                    period: "September 2022 – Present",
+                    responsibilities: "Designs and monitors representative samples for retail analysis, collaborates with cross-functional teams, delivers actionable insights, implements data quality monitoring systems"
+                },
+                {
+                    title: "Recruitment Consultant and Payroll Admin",
+                    company: "Team Support, London",
+                    period: "May 2021 – June 2022"
+                },
+                {
+                    title: "Market Research Interviewer",
+                    company: "GfK, Tirana",
+                    period: "May 2017 – September 2018"
+                }
+            ],
+            
+            skills: {
+                ai: ["Chatbot Development", "OpenAI API", "Google APIs", "Computer Vision", "OpenCV", "API Integration"],
+                technical: ["Python", "HTML", "CSS", "JavaScript", "SQL", "MySQL", "API Development", "Website Development"],
+                languages: ["Albanian (native)", "English (fluent)", "German (fluent)", "Spanish (fluent)"]
+            },
+            
+            projects: [
+                {
+                    name: "Vila Falo Resort Website",
+                    description: "Complete business website for a luxury mountain resort with multilingual content, booking system, and responsive design",
+                    link: "http://www.vilafalo.com/"
+                },
+                {
+                    name: "AI Assistant Chatbot",
+                    description: "Intelligent assistant using Google Gemini API that answers questions about professional experience"
+                }
+            ],
+            
+            hobbies: ["Reading", "Traveling", "AI Research", "Business Topics", "Startups", "AI Philosophy", "Innovation"]
+        };
+
+        const chatbotButton = document.getElementById('chatbotButton');
+        const chatbotContainer = document.getElementById('chatbotContainer');
+        const closeChatbot = document.getElementById('closeChatbot');
+        const chatbotMessages = document.getElementById('chatbotMessages');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const chatbotSend = document.getElementById('chatbotSend');
+
+        chatbotButton.addEventListener('click', () => {
+            chatbotContainer.classList.add('active');
+            chatbotInput.focus();
+        });
+
+        closeChatbot.addEventListener('click', () => {
+            chatbotContainer.classList.remove('active');
+        });
+
+        function addMessage(text, isBot = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isBot ? 'bot' : 'user'}`;
+            messageDiv.textContent = text;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'typing-indicator';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = '<span></span><span></span><span></span>';
+            chatbotMessages.appendChild(typingDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        async function sendToGemini(userMessage) {
+            const context = `You are an AI assistant representing Kristina Hanxhara. Answer questions ONLY about her professional career, skills, education, availability, contact information, and location (London, UK only - never give full address). 
+
+Here is the information you can share:
+- Name: ${kristinaInfo.name}
+- Title: ${kristinaInfo.title}
+- Location: ${kristinaInfo.location} (never share full address)
+- Phone: ${kristinaInfo.phone}
+- Email: ${kristinaInfo.email}
+- LinkedIn: ${kristinaInfo.linkedin}
+- Availability: ${kristinaInfo.availability}
+- Age: ${kristinaInfo.age}
+- Current Education: ${kristinaInfo.education.current}
+- Bachelor's: ${kristinaInfo.education.bachelor}
+- Skills: ${JSON.stringify(kristinaInfo.skills)}
+- Experience: ${JSON.stringify(kristinaInfo.experience)}
+- Projects: ${JSON.stringify(kristinaInfo.projects)}
+- Hobbies & Interests: ${kristinaInfo.hobbies.join(', ')}
+
+IMPORTANT RULES:
+1. ONLY answer questions about Kristina's professional information listed above
+2. If asked about anything else (weather, general knowledge, other topics), politely redirect: "I'm here to answer questions about Kristina's professional experience, skills, and availability. Is there anything you'd like to know about her career?"
+3. Keep responses concise and professional
+4. Never share full address - only mention "London, UK"
+5. Be friendly and helpful
+
+User question: ${userMessage}`;
+
+            try {
+                const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: context
+                            }]
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
+                    return data.candidates[0].content.parts[0].text;
+                } else {
+                    return "I'm here to answer questions about Kristina's professional experience, skills, education, and availability. What would you like to know?";
+                }
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                return "I'm having trouble connecting right now. Please try asking about Kristina's experience, skills, or availability, or contact her directly at kristinazhi97@gmail.com";
+            }
+        }
+
+        async function handleUserMessage() {
+            const userMessage = chatbotInput.value.trim();
+            if (!userMessage) return;
+
+            addMessage(userMessage, false);
+            chatbotInput.value = '';
+            
+            showTypingIndicator();
+            
+            const botResponse = await sendToGemini(userMessage);
+            
+            hideTypingIndicator();
+            addMessage(botResponse, true);
+        }
+
+        chatbotSend.addEventListener('click', handleUserMessage);
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleUserMessage();
+            }
+        });
+        
+        // Email.js Configuration
         const emailJsScript = document.createElement('script');
         emailJsScript.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
         document.head.appendChild(emailJsScript);
         
-        // Contact Form with Email.js Integration
         document.addEventListener('DOMContentLoaded', function() {
             const contactForm = document.getElementById('contact-form');
-            const statusDiv = document.getElementById('telegram-status');
             
-            // Initialize Email.js
-            // Replace with your own public key from emailjs.com
             emailjs.init("QVGHjvdiFpc8Tk-4B");
             
             if (contactForm) {
                 contactForm.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     
-                    // Show loading state
-                    statusDiv.className = 'form-status loading';
-                    statusDiv.innerHTML = '<div class="loading-spinner"></div> Sending your message...';
-                    
                     const submitBtn = this.querySelector('.submit-btn');
                     const originalText = submitBtn.textContent;
                     submitBtn.textContent = 'Sending...';
                     submitBtn.disabled = true;
                     
-                    // Get form data
                     const formData = {
                         name: document.getElementById('name').value,
                         email: document.getElementById('email').value,
@@ -1958,8 +2460,6 @@
                     };
                     
                     try {
-                        // Send email using Email.js
-                        // Replace with your service ID and template ID from emailjs.com
                         const response = await emailjs.send(
                             "service_wrpgjup", 
                             "template_lkh8to6",
@@ -1972,29 +2472,15 @@
                         );
                         
                         if (response.status === 200) {
-                            // Success message
-                            statusDiv.className = 'form-status success';
-                            statusDiv.textContent = 'Your message has been sent successfully! I will get back to you soon.';
+                            alert('Your message has been sent successfully! I will get back to you soon.');
                             contactForm.reset();
-                        } else {
-                            throw new Error('Failed to send email');
                         }
                     } catch (error) {
                         console.error('Error sending message:', error);
-                        
-                        // Error message
-                        statusDiv.className = 'form-status error';
-                        statusDiv.textContent = 'There was an error sending your message. Please try again later.';
+                        alert('There was an error sending your message. Please try emailing directly at kristinazhi97@gmail.com');
                     } finally {
                         submitBtn.textContent = originalText;
                         submitBtn.disabled = false;
-                        
-                        // Auto-hide status after 5 seconds
-                        setTimeout(() => {
-                            if (statusDiv.classList.contains('success')) {
-                                statusDiv.style.display = 'none';
-                            }
-                        }, 5000);
                     }
                 });
             }
@@ -2005,21 +2491,18 @@
             const navbar = document.getElementById('navbar');
             const scrollTopBtn = document.querySelector('.scroll-top');
             
-            // Navbar effect
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
             
-            // Scroll to top button
             if (window.scrollY > 500) {
                 scrollTopBtn.classList.add('active');
             } else {
                 scrollTopBtn.classList.remove('active');
             }
             
-            // Fade in elements on scroll
             const fadeElements = document.querySelectorAll('.fadeIn');
             fadeElements.forEach(el => {
                 const elementTop = el.getBoundingClientRect().top;
@@ -2057,25 +2540,7 @@
             });
         });
         
-        // Add extra hover effects to skills
-        const skillTags = document.querySelectorAll('.skill-tag');
-        skillTags.forEach(tag => {
-            tag.addEventListener('mouseover', () => {
-                skillTags.forEach(otherTag => {
-                    if (otherTag !== tag) {
-                        otherTag.style.opacity = '0.5';
-                    }
-                });
-            });
-            
-            tag.addEventListener('mouseout', () => {
-                skillTags.forEach(otherTag => {
-                    otherTag.style.opacity = '1';
-                });
-            });
-        });
-        
-        // Initialize animations for elements in viewport on page load
+        // Initialize animations
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const fadeElements = document.querySelectorAll('.fadeIn');
@@ -2088,42 +2553,6 @@
                     }
                 });
             }, 100);
-        });
-        
-        // Parallax effect
-        window.addEventListener('mousemove', (e) => {
-            const shapes = document.querySelectorAll('.floating-shape');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            shapes.forEach((shape, index) => {
-                const speed = (index + 1) * 20;
-                const xOffset = (x - 0.5) * speed;
-                const yOffset = (y - 0.5) * speed;
-                
-                shape.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${xOffset * 2}deg)`;
-            });
-        });
-        
-        // Portfolio item hover effect enhancement
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-        
-        portfolioItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                portfolioItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.style.opacity = '0.7';
-                        otherItem.style.transform = 'scale(0.98)';
-                    }
-                });
-            });
-            
-            item.addEventListener('mouseleave', () => {
-                portfolioItems.forEach(otherItem => {
-                    otherItem.style.opacity = '1';
-                    otherItem.style.transform = '';
-                });
-            });
         });
     </script>
 </body>

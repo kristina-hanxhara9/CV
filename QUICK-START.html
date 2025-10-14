@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Start Guide - Kristina's Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #7b68ee;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .step {
+            background: #f8f9fa;
+            border-left: 5px solid #7b68ee;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #7b68ee;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 5px 15px rgba(123, 104, 238, 0.3);
+        }
+
+        .step h3 {
+            color: #333;
+            margin-bottom: 15px;
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        .step p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .step ul {
+            margin-left: 20px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .step li {
+            margin-bottom: 8px;
+        }
+
+        .file-list {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 2px dashed #7b68ee;
+        }
+
+        .file-list code {
+            background: #e8e4ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #7b68ee;
+            font-weight: bold;
+        }
+
+        .important {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .important strong {
+            color: #856404;
+        }
+
+        .success {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #155724;
+        }
+
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #7b68ee, #9a7ee8);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 10px 10px 0;
+            transition: all 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(123, 104, 238, 0.4);
+        }
+
+        .checklist {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .checklist label {
+            display: block;
+            padding: 12px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .checklist label:hover {
+            background: #e8e4ff;
+        }
+
+        .checklist input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Quick Start Guide</h1>
+        <p class="subtitle">Get your portfolio online in 5 easy steps!</p>
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>📁 Check Your Files</h3>
+            <p>Make sure you have all these files in your KristinaCV folder:</p>
+            <div class="file-list">
+                <code>index.html</code> - Main website<br>
+                <code>chatbot.html</code> - AI Assistant<br>
+                <code>cv-updated.html</code> - Your CV<br>
+                <code>flyer.html</code> - STEM event flyer<br>
+                <code>qr-generator.html</code> - QR code tool
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>🌐 Deploy to GitHub Pages</h3>
+            <p><strong>This is the easiest and FREE way to get your website online!</strong></p>
+            <ul>
+                <li>Go to <a href="https://github.com" target="_blank">GitHub.com</a> and create an account (if you don't have one)</li>
+                <li>Click the "+" icon (top right) → "New repository"</li>
+                <li>Name it: <code>KristinaCV</code></li>
+                <li>Make it Public</li>
+                <li>Click "Create repository"</li>
+                <li>Click "uploading an existing file"</li>
+                <li>Drag and drop ALL your files</li>
+                <li>Click "Commit changes"</li>
+                <li>Go to Settings → Pages</li>
+                <li>Under "Branch", select "main" → Save</li>
+                <li>Wait 2-3 minutes, then your site will be at:<br>
+                    <code>https://YOUR-USERNAME.github.io/KristinaCV/</code></li>
+            </ul>
+        </div>
+
+        <div class="important">
+            <strong>⚠️ IMPORTANT:</strong> After deploying, you'll need to generate new QR codes with your actual website URL! Continue to Step 3.
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>📱 Generate Your QR Codes</h3>
+            <p>Now that you have your real website URL, create QR codes:</p>
+            <ul>
+                <li>Open <code>qr-generator.html</code> in a text editor (Notepad, VS Code, etc.)</li>
+                <li>Find line ~135: <code>text: "https://yourusername.github.io/KristinaCV/"</code></li>
+                <li>Replace with YOUR actual URL (from step 2)</li>
+                <li>Find line ~144: <code>text: "https://yourusername.github.io/KristinaCV/chatbot.html"</code></li>
+                <li>Replace with YOUR actual chatbot URL</li>
+                <li>Save the file</li>
+                <li>Open <code>qr-generator.html</code> in your browser</li>
+                <li>Click both download buttons</li>
+                <li>You now have 2 QR code images!</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <h3>📄 Add QR Codes to Documents</h3>
+            <p>Method 1 (Easy - Screenshot):</p>
+            <ul>
+                <li>Open <code>cv-updated.html</code> in your browser</li>
+                <li>Take a screenshot of the page</li>
+                <li>Open in image editor or Word</li>
+                <li>Paste your QR code images over the placeholders</li>
+                <li>Save as PDF</li>
+            </ul>
+            <p>Method 2 (Code - Better quality):</p>
+            <ul>
+                <li>Open <code>cv-updated.html</code> in text editor</li>
+                <li>Find: <code>&lt;div class="qr-placeholder-small"&gt;</code></li>
+                <li>Replace with: <code>&lt;img src="Website-QR-Code.png" style="width: 80px;"&gt;</code></li>
+                <li>Do the same for the chatbot QR</li>
+                <li>Open in browser and print to PDF</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <div class="step-number">5</div>
+            <h3>✅ Test Everything!</h3>
+            <p>Before sending to anyone, test these:</p>
+            <div class="checklist">
+                <label>
+                    <input type="checkbox"> Website loads correctly
+                </label>
+                <label>
+                    <input type="checkbox"> Chatbot button works and responds
+                </label>
+                <label>
+                    <input type="checkbox"> Vila Falo link goes to www.vilafalo.com
+                </label>
+                <label>
+                    <input type="checkbox"> Contact form sends emails
+                </label>
+                <label>
+                    <input type="checkbox"> Scan QR codes with your phone - they work!
+                </label>
+                <label>
+                    <input type="checkbox"> Chatbot only answers professional questions
+                </label>
+                <label>
+                    <input type="checkbox"> Website looks good on mobile
+                </label>
+                <label>
+                    <input type="checkbox"> No typos in CV or flyer
+                </label>
+            </div>
+        </div>
+
+        <div class="success">
+            <strong>🎉 You're Done!</strong><br>
+            Your professional AI portfolio is now live and ready to impress recruiters and at the Women in STEM event!
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="index.html" class="button">📱 Open Website</a>
+            <a href="chatbot.html" class="button">💬 Test Chatbot</a>
+            <a href="cv-updated.html" class="button">📄 View CV</a>
+            <a href="flyer.html" class="button">📋 View Flyer</a>
+        </div>
+
+        <div class="important">
+            <strong>💡 Pro Tips:</strong>
+            <ul style="margin-top: 10px;">
+                <li>Add your website URL to your LinkedIn profile</li>
+                <li>Include it in your email signature</li>
+                <li>Print several flyers for the STEM event</li>
+                <li>Test QR codes before printing!</li>
+                <li>Share your chatbot link - it's a great conversation starter!</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p><strong>Need Help?</strong></p>
+            <p>Check the full README.md file for detailed instructions and troubleshooting.</p>
+            <p style="margin-top: 20px; color: #7b68ee; font-weight: bold;">Good luck! You've got this! 🚀</p>
+        </div>
+    </div>
+</body>
+</html>

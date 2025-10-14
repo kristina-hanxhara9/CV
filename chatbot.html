@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Kristina's AI Assistant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .chatbot-fullpage {
+            width: 100%;
+            max-width: 800px;
+            height: 80vh;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #7b68ee 0%, #b19cd9 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .chatbot-header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .chatbot-header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: #f8f9fa;
+        }
+
+        .message {
+            padding: 15px 20px;
+            border-radius: 15px;
+            max-width: 70%;
+            word-wrap: break-word;
+            animation: slideIn 0.3s ease;
+            line-height: 1.6;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.bot {
+            background: linear-gradient(135deg, #f5f3ff 0%, #e8e4ff 100%);
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+            border: 2px solid #e8e4ff;
+        }
+
+        .message.user {
+            background: linear-gradient(135deg, #7b68ee 0%, #9a7ee8 100%);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 8px;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #f5f3ff 0%, #e8e4ff 100%);
+            border-radius: 15px;
+            border-bottom-left-radius: 5px;
+            width: fit-content;
+            border: 2px solid #e8e4ff;
+        }
+
+        .typing-indicator span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #7b68ee;
+            animation: bounce 1.4s infinite;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .chatbot-input-area {
+            padding: 25px 30px;
+            border-top: 2px solid #eee;
+            display: flex;
+            gap: 15px;
+            background: white;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #eee;
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .chatbot-input:focus {
+            border-color: #7b68ee;
+            box-shadow: 0 0 0 3px rgba(123, 104, 238, 0.1);
+        }
+
+        .chatbot-send-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7b68ee 0%, #9a7ee8 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 20px;
+        }
+
+        .chatbot-send-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(123, 104, 238, 0.4);
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 30px 20px;
+            background: #f8f9fa;
+        }
+
+        .suggestion-chip {
+            background: white;
+            border: 2px solid #e8e4ff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            color: #7b68ee;
+            font-weight: 500;
+        }
+
+        .suggestion-chip:hover {
+            background: #7b68ee;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(123, 104, 238, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .chatbot-fullpage {
+                height: 100vh;
+                border-radius: 0;
+            }
+
+            .message {
+                max-width: 85%;
+            }
+
+            .chatbot-header h1 {
+                font-size: 24px;
+            }
+
+            .back-link {
+                top: 10px;
+                left: 10px;
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Website</a>
+
+    <div class="chatbot-fullpage">
+        <div class="chatbot-header">
+            <h1>💬 Chat with Kristina's AI Assistant</h1>
+            <p>Ask me anything about Kristina's professional experience, skills, and availability!</p>
+        </div>
+
+        <div class="suggestions">
+            <div class="suggestion-chip" onclick="askQuestion('What is Kristina\'s experience?')">
+                What's her experience?
+            </div>
+            <div class="suggestion-chip" onclick="askQuestion('What skills does Kristina have?')">
+                What are her skills?
+            </div>
+            <div class="suggestion-chip" onclick="askQuestion('Is Kristina available for work?')">
+                Is she available?
+            </div>
+            <div class="suggestion-chip" onclick="askQuestion('What is Kristina\'s education background?')">
+                Education background
+            </div>
+            <div class="suggestion-chip" onclick="askQuestion('How can I contact Kristina?')">
+                Contact information
+            </div>
+        </div>
+
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot">
+                👋 Hello! I'm Kristina's AI assistant. I can help you learn about her professional career, technical skills, education, and availability. Feel free to ask me anything!
+            </div>
+        </div>
+
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Type your question here...">
+            <button class="chatbot-send-btn" id="chatbotSend">
+                ➤
+            </button>
+        </div>
+    </div>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        const GEMINI_API_KEY = 'AIzaSyDEUeqE-hBD46f6n9S0oeevGvYPHWLFrPM';
+        const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+
+        const kristinaInfo = {
+            name: "Kristina Hanxhara",
+            title: "AI Expert & Chatbot Developer",
+            location: "London, UK",
+            phone: "07497391831",
+            email: "kristinazhi97@gmail.com",
+            availability: "Available immediately",
+            age: "27 years old",
+            
+            education: {
+                current: "Master of Science in Data Science and Artificial Intelligence at University of Liverpool (April 2024 – Present)",
+                bachelor: "Bachelor's in Business Informatics (with High Honors) from University of Korca 'Fan Noli', Albania (October 2018 – October 2021)",
+                certifications: ["Front-End Development (HTML, CSS, JavaScript)", "Finance 5, AlphaWeb"]
+            },
+            
+            experience: [
+                {
+                    title: "Panel Quality Principal Analyst",
+                    company: "GfK, London",
+                    period: "September 2022 – Present",
+                    responsibilities: "Designs and monitors representative samples for retail analysis, collaborates with cross-functional teams, delivers actionable insights, implements data quality monitoring systems"
+                },
+                {
+                    title: "Recruitment Consultant and Payroll Admin",
+                    company: "Team Support, London",
+                    period: "May 2021 – June 2022"
+                },
+                {
+                    title: "Market Research Interviewer",
+                    company: "GfK, Tirana",
+                    period: "May 2017 – September 2018"
+                }
+            ],
+            
+            skills: {
+                ai: ["Chatbot Development", "OpenAI API", "Google APIs", "Computer Vision", "OpenCV", "API Integration"],
+                technical: ["Python", "HTML", "CSS", "JavaScript", "SQL", "MySQL", "API Development", "Website Development"],
+                languages: ["Albanian (native)", "English (fluent)", "German (fluent)", "Spanish (fluent)"]
+            },
+            
+            projects: [
+                {
+                    name: "Vila Falo Resort Website",
+                    description: "Complete business website for a luxury mountain resort with multilingual content, booking system, and responsive design",
+                    link: "http://www.vilafalo.com/"
+                },
+                {
+                    name: "AI Assistant Chatbot",
+                    description: "Intelligent assistant using Google Gemini API that answers questions about professional experience"
+                }
+            ]
+        };
+
+        const chatbotMessages = document.getElementById('chatbotMessages');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const chatbotSend = document.getElementById('chatbotSend');
+
+        function addMessage(text, isBot = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isBot ? 'bot' : 'user'}`;
+            messageDiv.textContent = text;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'typing-indicator';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = '<span></span><span></span><span></span>';
+            chatbotMessages.appendChild(typingDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        async function sendToGemini(userMessage) {
+            const context = `You are an AI assistant representing Kristina Hanxhara. Answer questions ONLY about her professional career, skills, education, availability, contact information, and location (London, UK only - never give full address). 
+
+Here is the information you can share:
+- Name: ${kristinaInfo.name}
+- Title: ${kristinaInfo.title}
+- Location: ${kristinaInfo.location} (never share full address)
+- Phone: ${kristinaInfo.phone}
+- Email: ${kristinaInfo.email}
+- Availability: ${kristinaInfo.availability}
+- Age: ${kristinaInfo.age}
+- Current Education: ${kristinaInfo.education.current}
+- Bachelor's: ${kristinaInfo.education.bachelor}
+- Skills: ${JSON.stringify(kristinaInfo.skills)}
+- Experience: ${JSON.stringify(kristinaInfo.experience)}
+- Projects: ${JSON.stringify(kristinaInfo.projects)}
+
+IMPORTANT RULES:
+1. ONLY answer questions about Kristina's professional information listed above
+2. If asked about anything else (weather, general knowledge, other topics), politely redirect: "I'm here to answer questions about Kristina's professional experience, skills, and availability. Is there anything you'd like to know about her career?"
+3. Keep responses concise and professional
+4. Never share full address - only mention "London, UK"
+5. Be friendly and helpful
+
+User question: ${userMessage}`;
+
+            try {
+                const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: context
+                            }]
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
+                    return data.candidates[0].content.parts[0].text;
+                } else {
+                    return "I'm here to answer questions about Kristina's professional experience, skills, education, and availability. What would you like to know?";
+                }
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                return "I'm having trouble connecting right now. Please try asking about Kristina's experience, skills, or availability, or contact her directly at kristinazhi97@gmail.com";
+            }
+        }
+
+        async function handleUserMessage(message = null) {
+            const userMessage = message || chatbotInput.value.trim();
+            if (!userMessage) return;
+
+            addMessage(userMessage, false);
+            if (!message) chatbotInput.value = '';
+            
+            showTypingIndicator();
+            
+            const botResponse = await sendToGemini(userMessage);
+            
+            hideTypingIndicator();
+            addMessage(botResponse, true);
+        }
+
+        function askQuestion(question) {
+            handleUserMessage(question);
+        }
+
+        chatbotSend.addEventListener('click', () => handleUserMessage());
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleUserMessage();
+            }
+        });
+
+        // Focus on input when page loads
+        chatbotInput.focus();
+    </script>
+</body>
+</html>
