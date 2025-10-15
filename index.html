@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kristina Hanxhara | AI Expert & Chatbot Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #7b68ee;
@@ -14,53 +18,230 @@
             --dark-color: #2d3436;
             --gradient-1: linear-gradient(135deg, #7b68ee 0%, #b19cd9 100%);
             --gradient-2: linear-gradient(135deg, #00bfb3 0%, #5fd4cb 100%);
-            --gradient-3: linear-gradient(135deg, #ff6b9d 0%, #ffb0ce 100%);
             --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             --transition-speed: 0.4s;
             --border-radius: 12px;
         }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
-        
         body {
             background-color: var(--light-color);
             color: var(--dark-color);
             line-height: 1.6;
             overflow-x: hidden;
         }
-        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--light-color);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-light);
-            border-radius: 10px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-color);
         }
 
-        /* Chatbot Button */
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(123, 104, 238, 0.1);
+            transition: all var(--transition-speed);
+            padding: 10px 0;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: 500;
+            opacity: 0.8;
+            transition: opacity var(--transition-speed);
+        }
+        .nav-links a:hover {
+            opacity: 1;
+        }
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+        .hero-content h1 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .hero-content h1 span {
+            color: var(--primary-color);
+        }
+        .hero-description {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            box-shadow: var(--box-shadow);
+            text-decoration: none;
+            color: var(--dark-color);
+        }
+        .contact-item i {
+            color: var(--primary-color);
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 14px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+        }
+        .cta-button.primary {
+            background: var(--gradient-1);
+            color: white;
+        }
+        .cta-button.secondary {
+            background: white;
+            color: var(--primary-color);
+        }
+        
+        /* --- SECTIONS (Shared) --- */
+        .section {
+            padding: 100px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 42px;
+        }
+        
+        /* --- ABOUT --- */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .skills-container {
+            margin-top: 20px;
+        }
+        .skills-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill-tag {
+            background-color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 14px;
+            box-shadow: var(--box-shadow);
+        }
+
+        /* --- PORTFOLIO --- */
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .portfolio-item {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+        .portfolio-image {
+            height: 200px;
+        }
+        .portfolio-content {
+            padding: 25px;
+        }
+        
+        /* --- EXPERIENCE & EDUCATION (Shared Cards) --- */
+        .card-container {
+            display: grid;
+            gap: 30px;
+        }
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        /* --- CONTACT --- */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+        }
+        
+        /* --- FOOTER --- */
+        footer {
+            background: var(--gradient-1);
+            color: white;
+            padding: 80px 0 30px;
+            text-align: center;
+        }
+        
+        /* --- CHATBOT WIDGET --- */
         .chatbot-button {
             position: fixed;
             bottom: 30px;
@@ -77,28 +258,7 @@
             z-index: 1001;
             box-shadow: 0 10px 30px rgba(123, 104, 238, 0.3);
             transition: all var(--transition-speed);
-            animation: pulse 2s infinite;
         }
-
-        .chatbot-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(123, 104, 238, 0.4);
-        }
-
-        .chatbot-button i {
-            font-size: 28px;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 10px 30px rgba(123, 104, 238, 0.3);
-            }
-            50% {
-                box-shadow: 0 10px 40px rgba(123, 104, 238, 0.5);
-            }
-        }
-
-        /* Chatbot Container */
         .chatbot-container {
             position: fixed;
             bottom: 100px;
@@ -111,14 +271,11 @@
             z-index: 1000;
             display: none;
             flex-direction: column;
-            overflow: hidden;
             transition: all var(--transition-speed);
         }
-
         .chatbot-container.active {
             display: flex;
         }
-
         .chatbot-header {
             background: var(--gradient-1);
             color: white;
@@ -127,24 +284,10 @@
             justify-content: space-between;
             align-items: center;
         }
-
-        .chatbot-header h3 {
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
         .chatbot-header .close-btn {
             cursor: pointer;
             font-size: 24px;
-            transition: transform var(--transition-speed);
         }
-
-        .chatbot-header .close-btn:hover {
-            transform: rotate(90deg);
-        }
-
         .chatbot-messages {
             flex: 1;
             padding: 20px;
@@ -153,46 +296,48 @@
             flex-direction: column;
             gap: 15px;
         }
-
         .message {
             padding: 12px 16px;
             border-radius: 15px;
             max-width: 80%;
             word-wrap: break-word;
-            animation: slideIn 0.3s ease;
         }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .message.bot {
-            background: linear-gradient(135deg, #f5f3ff 0%, #e8e4ff 100%);
+            background: #f1f0f0;
             align-self: flex-start;
-            border-bottom-left-radius: 5px;
         }
-
         .message.user {
-            background: var(--gradient-1);
+            background: var(--primary-color);
             color: white;
             align-self: flex-end;
-            border-bottom-right-radius: 5px;
         }
-
+        .typing-indicator {
+            display: flex;
+            gap: 5px;
+            padding: 12px 16px;
+            background: #f1f0f0;
+            border-radius: 15px;
+            align-self: flex-start;
+        }
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            animation: bounce 1.4s infinite;
+        }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes bounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
         .chatbot-input-area {
             padding: 20px;
             border-top: 1px solid #eee;
             display: flex;
             gap: 10px;
         }
-
         .chatbot-input {
             flex: 1;
             padding: 12px 16px;
@@ -200,13 +345,7 @@
             border-radius: 25px;
             font-size: 14px;
             outline: none;
-            transition: all var(--transition-speed);
         }
-
-        .chatbot-input:focus {
-            border-color: var(--primary-color);
-        }
-
         .chatbot-send-btn {
             width: 45px;
             height: 45px;
@@ -218,1530 +357,58 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all var(--transition-speed);
         }
-
-        .chatbot-send-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(123, 104, 238, 0.3);
-        }
-
-        .typing-indicator {
-            display: flex;
-            gap: 5px;
-            padding: 12px 16px;
-            background: linear-gradient(135deg, #f5f3ff 0%, #e8e4ff 100%);
-            border-radius: 15px;
-            border-bottom-left-radius: 5px;
-            width: fit-content;
-        }
-
-        .typing-indicator span {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            animation: bounce 1.4s infinite;
-        }
-
-        .typing-indicator span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .typing-indicator span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes bounce {
-            0%, 60%, 100% {
-                transform: translateY(0);
+        
+        /* --- MEDIA QUERIES (Mobile Friendliness) --- */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                text-align: center;
             }
-            30% {
-                transform: translateY(-10px);
+            .nav-links.active {
+                display: flex;
             }
-        }
-        
-        /* Navigation */
-        nav {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 999;
-            box-shadow: 0 5px 20px rgba(123, 104, 238, 0.1);
-            transition: all var(--transition-speed);
-        }
-        
-        nav.scrolled {
-            padding: 5px 0;
-            box-shadow: 0 5px 20px rgba(123, 104, 238, 0.2);
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            transition: all var(--transition-speed);
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            transition: all var(--transition-speed);
-            position: relative;
-            padding-bottom: 5px;
-        }
-        
-        .logo::after {
-            content: '';
-            position: absolute;
-            width: 30%;
-            height: 3px;
-            bottom: 0;
-            left: 0;
-            background: var(--gradient-1);
-            transition: width var(--transition-speed);
-        }
-        
-        .logo:hover::after {
-            width: 100%;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .nav-links li {
-            list-style: none;
-        }
-        
-        .nav-links a {
-            color: var(--dark-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all var(--transition-speed);
-            position: relative;
-            padding: 5px 0;
-            opacity: 0.8;
-        }
-        
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-1);
-            transition: width var(--transition-speed) ease;
-        }
-        
-        .nav-links a:hover {
-            opacity: 1;
-            transform: translateY(-2px);
-        }
-        
-        .nav-links a:hover::before {
-            width: 100%;
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding: 100px 0;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: var(--gradient-3);
-            opacity: 0.05;
-            z-index: 0;
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -10%;
-            left: -10%;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: var(--gradient-2);
-            opacity: 0.05;
-            z-index: 0;
-        }
-        
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            max-width: 700px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero-subtitle {
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 20px;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-            padding-left: 30px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s forwards 0.2s;
-        }
-        
-        .hero-subtitle::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            width: 20px;
-            height: 2px;
-            background: var(--primary-color);
-            transform: translateY(-50%);
-        }
-        
-        .hero h1 {
-            font-size: 60px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            position: relative;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s forwards 0.4s;
-        }
-        
-        .hero h1 span {
-            display: block;
-            color: var(--primary-color);
-        }
-        
-        .hero-description {
-            font-size: 18px;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            max-width: 600px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s forwards 0.6s;
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 30px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s forwards 0.8s;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background-color: white;
-            padding: 8px 15px;
-            border-radius: 30px;
-            box-shadow: var(--box-shadow);
-            transition: all var(--transition-speed);
-            cursor: pointer;
-            text-decoration: none;
-            color: var(--dark-color);
-        }
-        
-        .contact-item i {
-            color: var(--primary-color);
-            font-size: 14px;
-        }
-        
-        .contact-item span {
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(123, 104, 238, 0.15);
-            background: var(--gradient-1);
-        }
-        
-        .contact-item:hover i,
-        .contact-item:hover span {
-            color: white;
-        }
-        
-        .cta-buttons {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s forwards 1s;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            padding: 14px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all var(--transition-speed);
-            margin-right: 15px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            box-shadow: var(--box-shadow);
-        }
-        
-        .cta-button.primary {
-            background: var(--gradient-1);
-            color: white;
-        }
-        
-        .cta-button.primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: var(--gradient-2);
-            transition: all var(--transition-speed);
-            z-index: -1;
-            border-radius: 30px;
-        }
-        
-        .cta-button.primary:hover::before {
-            width: 100%;
-        }
-        
-        .cta-button.primary:hover {
-            box-shadow: 0 10px 25px rgba(0, 191, 179, 0.3);
-            transform: translateY(-5px);
-        }
-        
-        .cta-button.secondary {
-            background: white;
-            color: var(--primary-color);
-            border: 2px solid transparent;
-        }
-        
-        .cta-button.secondary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background-color: var(--primary-color);
-            transition: all var(--transition-speed);
-            z-index: -1;
-            border-radius: 30px;
-        }
-        
-        .cta-button.secondary:hover {
-            color: white;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(123, 104, 238, 0.15);
-        }
-        
-        .cta-button.secondary:hover::before {
-            width: 100%;
-        }
-        
-        /* Floating Elements */
-        .floating-shape {
-            position: absolute;
-            opacity: 0.5;
-            z-index: 0;
-        }
-        
-        .shape-1 {
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary-light);
-            top: 20%;
-            right: 15%;
-            border-radius: 12px;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .shape-2 {
-            width: 40px;
-            height: 40px;
-            background-color: var(--secondary-color);
-            bottom: 20%;
-            right: 25%;
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite 1s;
-        }
-        
-        .shape-3 {
-            width: 80px;
-            height: 80px;
-            border: 3px solid var(--accent-color);
-            top: 40%;
-            left: 10%;
-            border-radius: 50%;
-            animation: float 7s ease-in-out infinite 0.5s;
-        }
-        
-        /* Section Common Styles */
-        .section {
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .section-light {
-            background-color: white;
-        }
-        
-        .section-divider {
-            height: 100px;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .divider-curve {
-            position: absolute;
-            width: 100%;
-            height: 100px;
-            background-color: white;
-            z-index: 1;
-        }
-        
-        .divider-curve.top {
-            bottom: 0;
-            border-top-left-radius: 50% 100%;
-            border-top-right-radius: 50% 100%;
-        }
-        
-        .divider-curve.bottom {
-            top: 0;
-            border-bottom-left-radius: 50% 100%;
-            border-bottom-right-radius: 50% 100%;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-        
-        .section-subtitle {
-            display: inline-block;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--primary-color);
-            position: relative;
-            padding: 5px 10px;
-            margin-bottom: 15px;
-            z-index: 1;
-        }
-        
-        .section-subtitle::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--primary-light);
-            opacity: 0.2;
-            border-radius: 4px;
-            z-index: -1;
-        }
-        
-        .section-title h2 {
-            font-size: 42px;
-            color: var(--dark-color);
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 3px;
-            background: var(--gradient-1);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .section-description {
-            max-width: 700px;
-            margin: 0 auto 40px;
-            text-align: center;
-            opacity: 0.9;
-        }
-        
-        /* About Section */
-        .about {
-            position: relative;
-        }
-        
-        .about-bg {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.03) 0%, rgba(0, 191, 179, 0.03) 100%);
-            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
-            z-index: 0;
-        }
-        
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .about-image {
-            position: relative;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            transition: all var(--transition-speed);
-        }
-        
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-        
-        .about-text {
-            position: relative;
-        }
-        
-        .about-text h3 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: var(--dark-color);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-        
-        .about-text h3::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background: var(--gradient-2);
-            bottom: 0;
-            left: 0;
-        }
-        
-        .about-text p {
-            margin-bottom: 25px;
-            font-size: 16px;
-            line-height: 1.8;
-        }
-        
-        .skills-container {
-            margin-top: 30px;
-        }
-        
-        .skills-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--dark-color);
-        }
-        
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .skill-tag {
-            background-color: white;
-            color: var(--dark-color);
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all var(--transition-speed);
-            cursor: pointer;
-            box-shadow: var(--box-shadow);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .skill-tag::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: var(--gradient-1);
-            transition: all var(--transition-speed);
-            z-index: -1;
-            border-radius: 30px;
-        }
-        
-        .skill-tag:hover {
-            color: white;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 20px rgba(123, 104, 238, 0.15);
-        }
-        
-        .skill-tag:hover::before {
-            width: 100%;
-        }
-
-        /* Hobbies Section */
-        .hobbies-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hobby-item {
-            background: linear-gradient(135deg, #f5f3ff 0%, #e8e4ff 100%);
-            padding: 12px 20px;
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--dark-color);
-            transition: all var(--transition-speed);
-            cursor: default;
-        }
-
-        .hobby-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(123, 104, 238, 0.15);
-        }
-
-        .hobby-item i {
-            font-size: 20px;
-            color: var(--primary-color);
-        }
-        
-        /* Portfolio Section */
-        .portfolio {
-            background-color: white;
-            position: relative;
-        }
-        
-        .portfolio-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .portfolio-item {
-            position: relative;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: all var(--transition-speed);
-        }
-        
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(123, 104, 238, 0.1);
-        }
-        
-        .portfolio-image {
-            position: relative;
-            overflow: hidden;
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .portfolio-image svg {
-            width: 80px;
-            height: 80px;
-            fill: white;
-            opacity: 0.9;
-        }
-        
-        .portfolio-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all var(--transition-speed);
-        }
-        
-        .portfolio-item:hover .portfolio-image img {
-            transform: scale(1.1);
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(0deg, rgba(123, 104, 238, 0.8) 0%, rgba(0, 191, 179, 0.4) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: all var(--transition-speed);
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        
-        .portfolio-link {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background-color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 20px;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all var(--transition-speed) 0.1s;
-            text-decoration: none;
-        }
-        
-        .portfolio-item:hover .portfolio-link {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .portfolio-content {
-            padding: 25px;
-        }
-        
-        .portfolio-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--dark-color);
-        }
-        
-        .portfolio-category {
-            display: inline-block;
-            padding: 5px 10px;
-            background-color: rgba(123, 104, 238, 0.1);
-            color: var(--primary-color);
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-        
-        .portfolio-description {
-            font-size: 14px;
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-        
-        .portfolio-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 10px;
-        }
-        
-        .portfolio-tag {
-            padding: 3px 8px;
-            background-color: #f5f5f5;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        
-        /* Experience Section */
-        .experience {
-            position: relative;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.03) 0%, rgba(0, 191, 179, 0.03) 100%);
-        }
-        
-        .experience-container {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .experience-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: var(--box-shadow);
-            transition: all var(--transition-speed);
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-        }
-        
-        .experience-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(123, 104, 238, 0.1);
-        }
-        
-        .experience-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--gradient-1);
-            border-top-left-radius: var(--border-radius);
-            border-bottom-left-radius: var(--border-radius);
-            z-index: -1;
-        }
-        
-        .experience-card:nth-child(2n)::before {
-            background: var(--gradient-2);
-        }
-        
-        .experience-card:nth-child(3n)::before {
-            background: var(--gradient-3);
-        }
-        
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-        
-        .experience-title-container {
-            flex: 1;
-        }
-        
-        .experience-title {
-            font-size: 24px;
-            margin-bottom: 5px;
-            color: var(--dark-color);
-        }
-        
-        .experience-company {
-            font-size: 16px;
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .experience-date {
-            display: inline-block;
-            padding: 6px 12px;
-            background-color: rgba(123, 104, 238, 0.1);
-            color: var(--primary-color);
-            font-size: 14px;
-            font-weight: 500;
-            border-radius: 20px;
-        }
-        
-        .experience-card:nth-child(2n) .experience-date {
-            background-color: rgba(0, 191, 179, 0.1);
-            color: var(--secondary-color);
-        }
-        
-        .experience-card:nth-child(3n) .experience-date {
-            background-color: rgba(255, 107, 157, 0.1);
-            color: var(--accent-color);
-        }
-        
-        .experience-description {
-            margin-top: 20px;
-        }
-        
-        .experience-description ul {
-            list-style-type: none;
-        }
-        
-        .experience-description li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 12px;
-            line-height: 1.7;
-        }
-        
-        .experience-description li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: var(--primary-color);
-            font-size: 20px;
-        }
-        
-        .experience-card:nth-child(2n) .experience-description li::before {
-            color: var(--secondary-color);
-        }
-        
-        .experience-card:nth-child(3n) .experience-description li::before {
-            color: var(--accent-color);
-        }
-        
-        /* Education Section */
-        .education {
-            background-color: white;
-            position: relative;
-        }
-        
-        .education-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-        
-        .education-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 40px 30px;
-            width: 100%;
-            max-width: 350px;
-            box-shadow: var(--box-shadow);
-            transition: all var(--transition-speed);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .education-card::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 5px;
-            top: 0;
-            left: 0;
-            background: var(--gradient-1);
-            z-index: -1;
-        }
-        
-        .education-card:nth-child(2)::before {
-            background: var(--gradient-2);
-        }
-        
-        .education-card:nth-child(3)::before {
-            background: var(--gradient-3);
-        }
-        
-        .education-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(123, 104, 238, 0.1);
-        }
-        
-        .education-card-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 25px;
-            background: var(--gradient-1);
-            color: white;
-            font-size: 24px;
-            box-shadow: 0 10px 20px rgba(123, 104, 238, 0.2);
-        }
-        
-        .education-card:nth-child(2) .education-card-icon {
-            background: var(--gradient-2);
-            box-shadow: 0 10px 20px rgba(0, 191, 179, 0.2);
-        }
-        
-        .education-card:nth-child(3) .education-card-icon {
-            background: var(--gradient-3);
-            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.2);
-        }
-        
-        .education-card-title {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: var(--dark-color);
-        }
-        
-        .education-card-subtitle {
-            font-size: 16px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        
-        .education-card:nth-child(2) .education-card-subtitle {
-            color: var(--secondary-color);
-        }
-        
-        .education-card:nth-child(3) .education-card-subtitle {
-            color: var(--accent-color);
-        }
-        
-        .education-card-date {
-            display: inline-block;
-            padding: 6px 12px;
-            background-color: rgba(123, 104, 238, 0.1);
-            color: var(--primary-color);
-            font-size: 14px;
-            font-weight: 500;
-            border-radius: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .education-card:nth-child(2) .education-card-date {
-            background-color: rgba(0, 191, 179, 0.1);
-            color: var(--secondary-color);
-        }
-        
-        .education-card:nth-child(3) .education-card-date {
-            background-color: rgba(255, 107, 157, 0.1);
-            color: var(--accent-color);
-        }
-        
-        .education-card-description {
-            margin-top: auto;
-        }
-        
-        .education-card-description ul {
-            list-style-type: none;
-        }
-        
-        .education-card-description li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 12px;
-            line-height: 1.7;
-        }
-        
-        .education-card-description li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: var(--primary-color);
-            font-size: 20px;
-        }
-        
-        .education-card:nth-child(2) .education-card-description li::before {
-            color: var(--secondary-color);
-        }
-        
-        .education-card:nth-child(3) .education-card-description li::before {
-            color: var(--accent-color);
-        }
-        
-        /* Contact Section */
-        .contact {
-            position: relative;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.03) 0%, rgba(0, 191, 179, 0.03) 100%);
-        }
-        
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 50px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-        }
-        
-        .contact-info-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .contact-info-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            border-radius: var(--border-radius);
-            transition: all var(--transition-speed);
-            background-color: white;
-            box-shadow: var(--box-shadow);
-        }
-        
-        .contact-info-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(123, 104, 238, 0.1);
-        }
-        
-        .contact-info-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-            background: var(--gradient-1);
-            color: white;
-            font-size: 24px;
-            box-shadow: 0 10px 20px rgba(123, 104, 238, 0.2);
-            transition: all var(--transition-speed);
-        }
-        
-        .contact-info-item:nth-child(2) .contact-info-icon {
-            background: var(--gradient-2);
-            box-shadow: 0 10px 20px rgba(0, 191, 179, 0.2);
-        }
-        
-        .contact-info-item:nth-child(3) .contact-info-icon {
-            background: var(--gradient-3);
-            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.2);
-        }
-        
-        .contact-info-item:hover .contact-info-icon {
-            transform: rotateY(180deg);
-        }
-        
-        .contact-info-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--dark-color);
-        }
-        
-        .contact-info-text {
-            font-size: 16px;
-            color: var(--dark-color);
-            opacity: 0.8;
-        }
-        
-        .contact-form {
-            margin-top: 40px;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--dark-color);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 15px 20px;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all var(--transition-speed);
-            background-color: #f8f9fa;
-        }
-        
-        .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(123, 104, 238, 0.1);
-            outline: none;
-            background-color: white;
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all var(--transition-speed);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            border: none;
-            cursor: pointer;
-            background: var(--gradient-1);
-            color: white;
-            box-shadow: 0 10px 20px rgba(123, 104, 238, 0.2);
-        }
-        
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: var(--gradient-2);
-            transition: all var(--transition-speed);
-            z-index: -1;
-            border-radius: 30px;
-        }
-        
-        .submit-btn:hover {
-            box-shadow: 0 10px 20px rgba(0, 191, 179, 0.3);
-            transform: translateY(-5px);
-        }
-        
-        .submit-btn:hover::before {
-            width: 100%;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--gradient-1);
-            color: white;
-            padding: 80px 0 30px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background-color: white;
-            border-bottom-left-radius: 50% 100%;
-            border-bottom-right-radius: 50% 100%;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-            position: relative;
-        }
-        
-        .footer-info h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-        
-        .footer-info h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: white;
-        }
-        
-        .footer-info p {
-            margin-bottom: 20px;
-            opacity: 0.9;
-            line-height: 1.8;
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            transition: all var(--transition-speed);
-            text-decoration: none;
-        }
-        
-        .social-icon:hover {
-            background-color: white;
-            color: var(--primary-color);
-            transform: translateY(-5px);
-        }
-        
-        .footer-links h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-        
-        .footer-links h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 30px;
-            height: 2px;
-            background-color: white;
-        }
-        
-        .footer-links ul {
-            list-style-type: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: white;
-            opacity: 0.8;
-            text-decoration: none;
-            transition: all var(--transition-speed);
-            position: relative;
-            padding-left: 15px;
-        }
-        
-        .footer-links a::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            transition: all var(--transition-speed);
-        }
-        
-        .footer-links a:hover {
-            opacity: 1;
-            padding-left: 20px;
-        }
-        
-        .footer-links a:hover::before {
-            left: 5px;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.8;
-            font-size: 14px;
-        }
-        
-        /* Scroll to top button */
-        .scroll-top {
-            position: fixed;
-            bottom: 100px;
-            right: 110px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--gradient-1);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all var(--transition-speed);
-            box-shadow: 0 10px 20px rgba(123, 104, 238, 0.2);
-        }
-        
-        .scroll-top.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .scroll-top:hover {
-            background: var(--gradient-2);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 191, 179, 0.3);
-        }
-        
-        /* Animations */
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
+            .hamburger-menu {
+                display: block;
             }
-            50% {
-                transform: translateY(-20px) rotate(10deg);
+            .hero-content h1 {
+                font-size: 36px;
             }
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-        }
-        
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .fadeIn {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        
-        .fadeIn.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Responsive */
-        @media screen and (max-width: 992px) {
-            .hero h1 {
-                font-size: 48px;
-            }
-            
             .about-content {
                 grid-template-columns: 1fr;
             }
-            
-            .about-image {
-                order: -1;
-                max-width: 500px;
-                margin: 0 auto;
-            }
-        }
-        
-        @media screen and (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-            }
-            
-            .logo {
-                margin-bottom: 20px;
-            }
-            
-            .nav-links {
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-            
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero-subtitle {
-                font-size: 16px;
-            }
-            
-            .hero-description {
-                font-size: 16px;
-            }
-            
-            .contact-container {
-                padding: 30px;
-            }
-            
-            .section-title h2 {
-                font-size: 32px;
-            }
-
             .chatbot-container {
-                width: calc(100% - 20px);
-                height: calc(100vh - 120px);
-                bottom: 10px;
-                right: 10px;
-                border-radius: 15px;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                border-radius: 0;
             }
-
             .chatbot-button {
                 bottom: 20px;
                 right: 20px;
-                width: 55px;
-                height: 55px;
-            }
-
-            .scroll-top {
-                bottom: 90px;
-                right: 20px;
-            }
-        }
-        
-        @media screen and (max-width: 576px) {
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .cta-buttons {
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .cta-button {
-                margin-right: 0;
-                text-align: center;
-            }
-            
-            .experience-header {
-                flex-direction: column;
-            }
-            
-            .experience-date {
-                margin-top: 10px;
-            }
-            
-            .contact-info-container {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info {
-                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+
     <nav id="navbar">
         <div class="container nav-container">
             <div class="logo">KRISTINA HANXHARA</div>
-            <ul class="nav-links">
+            <div class="hamburger-menu" id="hamburgerMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
@@ -1751,808 +418,230 @@
         </div>
     </nav>
 
-    <!-- Chatbot Widget -->
     <div class="chatbot-button" id="chatbotButton">
         <i class="fas fa-robot"></i>
     </div>
-
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
             <h3><i class="fas fa-robot"></i> Ask about Kristina</h3>
             <span class="close-btn" id="closeChatbot">&times;</span>
         </div>
         <div class="chatbot-messages" id="chatbotMessages">
-            <div class="message bot">
-                Hi! I'm Kristina's AI assistant. Ask me about her professional career, availability, education, or how to contact her!
-            </div>
+            <div class="message bot">Hi! I'm Kristina's AI assistant. Ask me anything about her professional career, skills, and availability!</div>
         </div>
         <div class="chatbot-input-area">
-            <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Ask me anything about Kristina...">
-            <button class="chatbot-send-btn" id="chatbotSend">
-                <i class="fas fa-paper-plane"></i>
-            </button>
+            <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Ask a question...">
+            <button class="chatbot-send-btn" id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <span class="hero-subtitle">AI Expert & Chatbot Developer</span>
                 <h1>Creating Intelligent <span>AI Solutions</span></h1>
-                <p class="hero-description">I create practical AI implementations using Python, OpenAI API, Google APIs, and modern web technologies. From multilingual chatbots to full-stack websites, I build solutions that actually make people's lives easier and deliver real business value.</p>
-                
+                <p class="hero-description">I build practical AI solutions using Python, Google APIs, and modern web technologies to deliver real business value.</p>
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>London, UK</span>
-                    </div>
-                    <a href="tel:+447497391831" class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>07497391831</span>
-                    </a>
-                    <a href="mailto:kristinazhi97@gmail.com" class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>kristinazhi97@gmail.com</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/kristina-hanxhara-b41a29223/" target="_blank" class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn</span>
-                    </a>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>London, UK</span></div>
+                    <a href="mailto:kristinazhi97@gmail.com" class="contact-item"><i class="fas fa-envelope"></i><span>kristinazhi97@gmail.com</span></a>
+                    <a href="https://www.linkedin.com/in/kristina-hanxhara-b41a29223/" target="_blank" class="contact-item"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
                 </div>
-                
                 <div class="cta-buttons">
                     <a href="#portfolio" class="cta-button primary">View My Work</a>
                     <a href="#contact" class="cta-button secondary">Let's Talk</a>
                 </div>
             </div>
         </div>
-        
-        <div class="floating-shape shape-1"></div>
-        <div class="floating-shape shape-2"></div>
-        <div class="floating-shape shape-3"></div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="section about">
-        <div class="about-bg"></div>
         <div class="container">
             <div class="section-title">
-                <span class="section-subtitle">About Me</span>
-                <h2>AI Specialist</h2>
-                <p class="section-description">I'm passionate about creating AI that delivers genuine business value - building systems that are accessible, useful, and effective for real-world challenges.</p>
+                <h2>About Me</h2>
             </div>
-            
             <div class="about-content">
-                <div class="about-text fadeIn">
-                    <h3>My Approach to AI</h3>
-                    <p>I believe AI shouldn't intimidate businesses—it should empower them. I focus on creating solutions that actually make people's lives easier, explaining technical concepts in ways everyone can understand.</p>
-                    <p>Currently pursuing a Master's in Data Science and AI at University of Liverpool while working as a Principal Analyst at GfK, I combine technical skills in Python, HTML, CSS, JavaScript, SQL, and MySQL with practical AI implementation. My multilingual abilities (Albanian, German, Spanish) allow me to develop solutions for international markets.</p>
-                    <p>What sets me apart is my focus on creating AI that delivers genuine business value. I build systems that are accessible, useful, and effective—whether that's a customer service chatbot, an AI-powered website, or a custom automation tool.</p>
-                    
+                <div class="about-text">
+                    <p>I combine my ongoing Master's in Data Science & AI with hands-on experience as a Principal Analyst to build effective, real-world AI systems. My focus is on creating solutions—from chatbots to automation tools—that are accessible, useful, and deliver genuine business value.</p>
                     <div class="skills-container">
-                        <h4 class="skills-title">AI Technologies</h4>
+                        <h4 class="skills-title">AI & Technical Skills</h4>
                         <div class="skills">
                             <span class="skill-tag">Chatbot Development</span>
-                            <span class="skill-tag">OpenAI API</span>
                             <span class="skill-tag">Google APIs</span>
-                            <span class="skill-tag">Computer Vision</span>
-                            <span class="skill-tag">OpenCV</span>
-                            <span class="skill-tag">API Integration</span>
-                        </div>
-                    </div>
-                    
-                    <div class="skills-container">
-                        <h4 class="skills-title">Technical Skills</h4>
-                        <div class="skills">
                             <span class="skill-tag">Python</span>
-                            <span class="skill-tag">HTML</span>
-                            <span class="skill-tag">CSS</span>
                             <span class="skill-tag">JavaScript</span>
                             <span class="skill-tag">SQL</span>
-                            <span class="skill-tag">MySQL</span>
-                            <span class="skill-tag">API Development</span>
-                            <span class="skill-tag">Website Development</span>
+                            <span class="skill-tag">API Integration</span>
+                            <span class="skill-tag">HTML/CSS</span>
                         </div>
                     </div>
                 </div>
-                
-                <div class="about-image fadeIn">
+                <div class="about-image">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" fill="#7b68ee">
                         <rect x="150" y="100" width="200" height="250" rx="15" fill="#b19cd9" opacity="0.3"/>
                         <circle cx="250" cy="180" r="50" fill="#7b68ee"/>
                         <rect x="200" y="250" width="100" height="100" rx="10" fill="#7b68ee"/>
                         <text x="250" y="480" text-anchor="middle" font-size="20" fill="#7b68ee" font-weight="bold">AI Expert</text>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Hobbies & Interests -->
-            <div class="section-title" style="margin-top: 80px;">
-                <span class="section-subtitle">Personal Interests</span>
-                <h2>Beyond Work</h2>
-            </div>
-            <div class="hobbies-container fadeIn">
-                <div class="hobby-item">
-                    <i class="fas fa-book"></i>
-                    <span>Reading</span>
-                </div>
-                <div class="hobby-item">
-                    <i class="fas fa-plane"></i>
-                    <span>Traveling</span>
-                </div>
-                <div class="hobby-item">
-                    <i class="fas fa-robot"></i>
-                    <span>AI Research</span>
-                </div>
-                <div class="hobby-item">
-                    <i class="fas fa-briefcase"></i>
-                    <span>Business Topics</span>
-                </div>
-                <div class="hobby-item">
-                    <i class="fas fa-rocket"></i>
-                    <span>Startups</span>
-                </div>
-                <div class="hobby-item">
-                    <i class="fas fa-brain"></i>
-                    <span>AI Philosophy</span>
-                </div>
-                <div class="hobby-item">
-                    <i class="fas fa-lightbulb"></i>
-                    <span>Innovation</span>
+                     </svg>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Divider -->
-    <div class="section-divider">
-        <div class="divider-curve top"></div>
-    </div>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section portfolio">
-        <div class="container">
-            <div class="section-title">
-                <span class="section-subtitle">My Projects</span>
-                <h2>AI Portfolio</h2>
-                <p class="section-description">A showcase of my AI implementation work and solutions.</p>
-            </div>
-            
-            <div class="portfolio-container">
-                <div class="portfolio-item fadeIn">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #00bfb3 0%, #5fd4cb 100%);">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-                            <path d="M12 11L7 8v6l5 3 5-3V8l-5 3z" opacity="0.5"/>
-                        </svg>
-                    </div>
-                    <div class="portfolio-content">
-                        <span class="portfolio-category">Full-Stack Website</span>
-                        <h3 class="portfolio-title">Vila Falo Resort Website</h3>
-                        <p class="portfolio-description">Complete business website for a luxury mountain resort in Albania. Features multilingual content, booking system, restaurant menus, and responsive design.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Python</span>
-                            <span class="portfolio-tag">JavaScript</span>
-                            <span class="portfolio-tag">HTML/CSS</span>
-                            <span class="portfolio-tag">Heroku</span>
-                        </div>
-                        <div style="margin-top: 15px;">
-                            <a href="http://www.vilafalo.com/" target="_blank" style="color: #00bfb3; font-weight: 600; text-decoration: none;">🔗 Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item fadeIn">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #ff6b9d 0%, #ffb0ce 100%);">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                        </svg>
-                    </div>
-                    <div class="portfolio-content">
-                        <span class="portfolio-category">Computer Vision</span>
-                        <h3 class="portfolio-title">AI Product Recognition System</h3>
-                        <p class="portfolio-description">Computer vision system that identifies products from uploaded images using Python and OpenCV. Processes photos with high accuracy for e-commerce cataloging.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Python</span>
-                            <span class="portfolio-tag">OpenCV</span>
-                            <span class="portfolio-tag">Computer Vision</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item fadeIn">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #7b68ee 0%, #b19cd9 100%);">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/>
-                            <circle cx="12" cy="8" r="1.5" opacity="0.5"/>
-                        </svg>
-                    </div>
-                    <div class="portfolio-content">
-                        <span class="portfolio-category">AI Chatbot</span>
-                        <h3 class="portfolio-title">AI Assistant Chatbot</h3>
-                        <p class="portfolio-description">Intelligent assistant using Google Gemini API that answers questions about professional experience, skills, and availability. Try it using the chat button!</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Google Gemini</span>
-                            <span class="portfolio-tag">JavaScript</span>
-                            <span class="portfolio-tag">AI</span>
-                        </div>
-                        <div style="margin-top: 15px;">
-                            <a href="chatbot.html" target="_blank" style="color: #7b68ee; font-weight: 600; text-decoration: none;">🔗 Try Chatbot</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item fadeIn">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-                        </svg>
-                    </div>
-                    <div class="portfolio-content">
-                        <span class="portfolio-category">Data Analytics</span>
-                        <h3 class="portfolio-title">Business Analytics Dashboard</h3>
-                        <p class="portfolio-description">Interactive web application combining data analysis expertise with AI insights. Provides real-time business intelligence and automated reporting.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Python</span>
-                            <span class="portfolio-tag">SQL</span>
-                            <span class="portfolio-tag">Data Visualization</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Divider -->
-    <div class="section-divider">
-        <div class="divider-curve bottom"></div>
-    </div>
-
-    <!-- Experience Section -->
-    <section id="experience" class="section experience">
-        <div class="container">
-            <div class="section-title">
-                <span class="section-subtitle">My Experience</span>
-                <h2>Work History</h2>
-                <p class="section-description">My professional journey focused on AI implementation and solutions.</p>
-            </div>
-            
-            <div class="experience-container">
-                <div class="experience-card fadeIn">
-                    <div class="experience-header">
-                        <div class="experience-title-container">
-                            <h3 class="experience-title">Panel Quality Principal Analyst</h3>
-                            <p class="experience-company">GfK, London</p>
-                        </div>
-                        <span class="experience-date">September 2022 – Present</span>
-                    </div>
-                    <div class="experience-description">
-                        <ul>
-                            <li>Design and monitor representative samples for retail analysis, ensuring data quality</li>
-                            <li>Collaborate with cross-functional teams to track KPIs and resolve data quality issues</li>
-                            <li>Deliver actionable insights by analyzing retail data, contributing to strategic decision-making</li>
-                            <li>Implement data quality monitoring systems to improve analysis reliability</li>
-                            <li>Create visual dashboards that make complex data accessible to stakeholders</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="experience-card fadeIn">
-                    <div class="experience-header">
-                        <div class="experience-title-container">
-                            <h3 class="experience-title">Recruitment Consultant and Payroll Admin</h3>
-                            <p class="experience-company">Team Support, London</p>
-                        </div>
-                        <span class="experience-date">May 2021 – June 2022</span>
-                    </div>
-                    <div class="experience-description">
-                        <ul>
-                            <li>Managed recruitment databases, ensuring accurate and up-to-date candidate information</li>
-                            <li>Sourced and analyzed candidate data to meet requirement quotas</li>
-                            <li>Coordinated with teams to meet recruitment quotas in fast-paced environments</li>
-                            <li>Used data management techniques to improve workflow efficiency</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="experience-card fadeIn">
-                    <div class="experience-header">
-                        <div class="experience-title-container">
-                            <h3 class="experience-title">Market Research Interviewer</h3>
-                            <p class="experience-company">GfK, Tirana</p>
-                        </div>
-                        <span class="experience-date">May 2017 – September 2018</span>
-                    </div>
-                    <div class="experience-description">
-                        <ul>
-                            <li>Conducted interviews and surveys in the German language, ensuring data collection accuracy</li>
-                            <li>Delivered on-time project completion while balancing multiple priorities</li>
-                            <li>Maintained high standards of data quality throughout research processes</li>
-                            <li>Contributed to multilingual research initiatives with consistent quality</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Divider -->
-    <div class="section-divider">
-        <div class="divider-curve top"></div>
-    </div>
-
-    <!-- Education Section -->
-    <section id="education" class="section education">
-        <div class="container">
-            <div class="section-title">
-                <span class="section-subtitle">My Learning Journey</span>
-                <h2>Education & Development</h2>
-                <p class="section-description">Building expertise in AI and conversational technologies.</p>
-            </div>
-            
-            <div class="education-container">
-                <div class="education-card fadeIn">
-                    <div class="education-card-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="education-card-title">Master of Science</h3>
-                    <p class="education-card-subtitle">Data Science and AI</p>
-                    <span class="education-card-date">University of Liverpool | April 2024 – Present</span>
-                    <div class="education-card-description">
-                        <ul>
-                            <li>Focus on practical applications of AI, including chatbot development and automated systems</li>
-                            <li>Developing skills in Python programming, API integration, and web-based AI solutions</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="education-card fadeIn">
-                    <div class="education-card-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="education-card-title">Bachelor's Degree</h3>
-                    <p class="education-card-subtitle">Business Informatics (High Honors)</p>
-                    <span class="education-card-date">University of Korca "Fan Noli" | 2018 – 2021</span>
-                    <div class="education-card-description">
-                        <ul>
-                            <li>Thesis: "Web Technologies for Business Automation"</li>
-                            <li>Graduated top of class with focus on applying technology to business challenges</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="education-card fadeIn">
-                    <div class="education-card-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3 class="education-card-title">Technical Certifications</h3>
-                    <p class="education-card-subtitle">Web & Business Skills</p>
-                    <div class="education-card-description">
-                        <ul>
-                            <li>Front-End Development (HTML, CSS, JavaScript) – ATC, Albania</li>
-                            <li>Finance 5, AlphaWeb – TCT, Albania</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Divider -->
-    <div class="section-divider">
-        <div class="divider-curve bottom"></div>
-    </div>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-        <div class="container">
-            <div class="section-title">
-                <span class="section-subtitle">Get In Touch</span>
-                <h2>Let's Build Your AI Solution</h2>
-                <p class="section-description">Ready to transform your business with AI? Let's discuss how I can help create custom AI solutions for your specific needs.</p>
-            </div>
-            
-            <div class="contact-container fadeIn">
-                <div class="contact-info-container">
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h4 class="contact-info-title">Email</h4>
-                        <p class="contact-info-text">kristinazhi97@gmail.com</p>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <h4 class="contact-info-title">Phone</h4>
-                        <p class="contact-info-text">07497391831</p>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <h4 class="contact-info-title">Location</h4>
-                        <p class="contact-info-text">London, UK</p>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h3>Kristina Hanxhara</h3>
-                    <p>AI Expert & Chatbot Developer specializing in creating intelligent solutions that transform businesses and enhance customer experiences.</p>
-                    <div class="footer-social">
-                        <a href="https://www.linkedin.com/in/kristina-hanxhara-b41a29223/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="mailto:kristinazhi97@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Me</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2025 Kristina Hanxhara. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scroll to top button -->
-    <div class="scroll-top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     
-    <!-- Google Fonts -->
     <script>
-        // Dynamically load Google Fonts
-        const fontLink = document.createElement('link');
-        fontLink.rel = 'stylesheet';
-        fontLink.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap';
-        document.head.appendChild(fontLink);
-        
-        const GEMINI_API_KEY = 'AIzaSyDEUeqE-hBD46f6n9S0oeevGvYPHWLFrPM';
-        const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+        document.addEventListener('DOMContentLoaded', () => {
 
-        const kristinaInfo = {
-            name: "Kristina Hanxhara",
-            title: "AI Expert & Chatbot Developer",
-            location: "London, UK",
-            phone: "07497391831",
-            email: "kristinazhi97@gmail.com",
-            linkedin: "https://www.linkedin.com/in/kristina-hanxhara-b41a29223/",
-            availability: "Available immediately",
-            age: "27 years old",
-            
-            education: {
-                current: "Master of Science in Data Science and Artificial Intelligence at University of Liverpool (April 2024 – Present)",
-                bachelor: "Bachelor's in Business Informatics (with High Honors) from University of Korca 'Fan Noli', Albania (October 2018 – October 2021)",
-                certifications: ["Front-End Development (HTML, CSS, JavaScript)", "Finance 5, AlphaWeb"]
-            },
-            
-            experience: [
-                {
-                    title: "Panel Quality Principal Analyst",
-                    company: "GfK, London",
-                    period: "September 2022 – Present",
-                    responsibilities: "Designs and monitors representative samples for retail analysis, collaborates with cross-functional teams, delivers actionable insights, implements data quality monitoring systems"
-                },
-                {
-                    title: "Recruitment Consultant and Payroll Admin",
-                    company: "Team Support, London",
-                    period: "May 2021 – June 2022"
-                },
-                {
-                    title: "Market Research Interviewer",
-                    company: "GfK, Tirana",
-                    period: "May 2017 – September 2018"
-                }
-            ],
-            
-            skills: {
-                ai: ["Chatbot Development", "OpenAI API", "Google APIs", "Computer Vision", "OpenCV", "API Integration"],
-                technical: ["Python", "HTML", "CSS", "JavaScript", "SQL", "MySQL", "API Development", "Website Development"],
-                languages: ["Albanian (native)", "English (fluent)", "German (fluent)", "Spanish (fluent)"]
-            },
-            
-            projects: [
-                {
-                    name: "Vila Falo Resort Website",
-                    description: "Complete business website for a luxury mountain resort with multilingual content, booking system, and responsive design",
-                    link: "http://www.vilafalo.com/"
-                },
-                {
-                    name: "AI Assistant Chatbot",
-                    description: "Intelligent assistant using Google Gemini API that answers questions about professional experience"
-                }
-            ],
-            
-            hobbies: ["Reading", "Traveling", "AI Research", "Business Topics", "Startups", "AI Philosophy", "Innovation"]
-        };
-
-        const chatbotButton = document.getElementById('chatbotButton');
-        const chatbotContainer = document.getElementById('chatbotContainer');
-        const closeChatbot = document.getElementById('closeChatbot');
-        const chatbotMessages = document.getElementById('chatbotMessages');
-        const chatbotInput = document.getElementById('chatbotInput');
-        const chatbotSend = document.getElementById('chatbotSend');
-
-        chatbotButton.addEventListener('click', () => {
-            chatbotContainer.classList.add('active');
-            chatbotInput.focus();
-        });
-
-        closeChatbot.addEventListener('click', () => {
-            chatbotContainer.classList.remove('active');
-        });
-
-        function addMessage(text, isBot = false) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${isBot ? 'bot' : 'user'}`;
-            messageDiv.textContent = text;
-            chatbotMessages.appendChild(messageDiv);
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-        }
-
-        function showTypingIndicator() {
-            const typingDiv = document.createElement('div');
-            typingDiv.className = 'typing-indicator';
-            typingDiv.id = 'typingIndicator';
-            typingDiv.innerHTML = '<span></span><span></span><span></span>';
-            chatbotMessages.appendChild(typingDiv);
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-        }
-
-        function hideTypingIndicator() {
-            const typingIndicator = document.getElementById('typingIndicator');
-            if (typingIndicator) {
-                typingIndicator.remove();
-            }
-        }
-
-        async function sendToGemini(userMessage) {
-            const context = `You are an AI assistant representing Kristina Hanxhara. Answer questions ONLY about her professional career, skills, education, availability, contact information, and location (London, UK only - never give full address). 
-
-Here is the information you can share:
-- Name: ${kristinaInfo.name}
-- Title: ${kristinaInfo.title}
-- Location: ${kristinaInfo.location} (never share full address)
-- Phone: ${kristinaInfo.phone}
-- Email: ${kristinaInfo.email}
-- LinkedIn: ${kristinaInfo.linkedin}
-- Availability: ${kristinaInfo.availability}
-- Age: ${kristinaInfo.age}
-- Current Education: ${kristinaInfo.education.current}
-- Bachelor's: ${kristinaInfo.education.bachelor}
-- Skills: ${JSON.stringify(kristinaInfo.skills)}
-- Experience: ${JSON.stringify(kristinaInfo.experience)}
-- Projects: ${JSON.stringify(kristinaInfo.projects)}
-- Hobbies & Interests: ${kristinaInfo.hobbies.join(', ')}
-
-IMPORTANT RULES:
-1. ONLY answer questions about Kristina's professional information listed above
-2. If asked about anything else (weather, general knowledge, other topics), politely redirect: "I'm here to answer questions about Kristina's professional experience, skills, and availability. Is there anything you'd like to know about her career?"
-3. Keep responses concise and professional
-4. Never share full address - only mention "London, UK"
-5. Be friendly and helpful
-
-User question: ${userMessage}`;
-
-            try {
-                const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        contents: [{
-                            parts: [{
-                                text: context
-                            }]
-                        }]
-                    })
-                });
-
-                const data = await response.json();
-                
-                if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
-                    return data.candidates[0].content.parts[0].text;
-                } else {
-                    return "I'm here to answer questions about Kristina's professional experience, skills, education, and availability. What would you like to know?";
-                }
-            } catch (error) {
-                console.error('Error calling Gemini API:', error);
-                return "I'm having trouble connecting right now. Please try asking about Kristina's experience, skills, or availability, or contact her directly at kristinazhi97@gmail.com";
-            }
-        }
-
-        async function handleUserMessage() {
-            const userMessage = chatbotInput.value.trim();
-            if (!userMessage) return;
-
-            addMessage(userMessage, false);
-            chatbotInput.value = '';
-            
-            showTypingIndicator();
-            
-            const botResponse = await sendToGemini(userMessage);
-            
-            hideTypingIndicator();
-            addMessage(botResponse, true);
-        }
-
-        chatbotSend.addEventListener('click', handleUserMessage);
-        chatbotInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                handleUserMessage();
-            }
-        });
-        
-        // Email.js Configuration
-        const emailJsScript = document.createElement('script');
-        emailJsScript.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
-        document.head.appendChild(emailJsScript);
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const contactForm = document.getElementById('contact-form');
-            
-            emailjs.init("QVGHjvdiFpc8Tk-4B");
-            
-            if (contactForm) {
-                contactForm.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    
-                    const submitBtn = this.querySelector('.submit-btn');
-                    const originalText = submitBtn.textContent;
-                    submitBtn.textContent = 'Sending...';
-                    submitBtn.disabled = true;
-                    
-                    const formData = {
-                        name: document.getElementById('name').value,
-                        email: document.getElementById('email').value,
-                        subject: document.getElementById('subject').value,
-                        message: document.getElementById('message').value
-                    };
-                    
-                    try {
-                        const response = await emailjs.send(
-                            "service_wrpgjup", 
-                            "template_lkh8to6",
-                            {
-                                from_name: formData.name,
-                                reply_to: formData.email,
-                                subject: formData.subject,
-                                message: formData.message
-                            }
-                        );
-                        
-                        if (response.status === 200) {
-                            alert('Your message has been sent successfully! I will get back to you soon.');
-                            contactForm.reset();
-                        }
-                    } catch (error) {
-                        console.error('Error sending message:', error);
-                        alert('There was an error sending your message. Please try emailing directly at kristinazhi97@gmail.com');
-                    } finally {
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
+            // --- Mobile Navigation ---
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const navLinks = document.getElementById('navLinks');
+            hamburgerMenu.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
                     }
                 });
-            }
-        });
-        
-        // Scrolling effects
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            const scrollTopBtn = document.querySelector('.scroll-top');
-            
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            
-            if (window.scrollY > 500) {
-                scrollTopBtn.classList.add('active');
-            } else {
-                scrollTopBtn.classList.remove('active');
-            }
-            
-            const fadeElements = document.querySelectorAll('.fadeIn');
-            fadeElements.forEach(el => {
-                const elementTop = el.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    el.classList.add('visible');
-                }
             });
-        });
-        
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
+
+            // --- Chatbot Logic ---
+            const API_URL = 'https://cv-five-self.vercel.app/api/generate'; // Your secure Vercel API
+            const chatbotButton = document.getElementById('chatbotButton');
+            const chatbotContainer = document.getElementById('chatbotContainer');
+            const closeChatbot = document.getElementById('closeChatbot');
+            const chatbotMessages = document.getElementById('chatbotMessages');
+            const chatbotInput = document.getElementById('chatbotInput');
+            const chatbotSend = document.getElementById('chatbotSend');
+
+            // Hardcoded Kristina info to build the context for the AI
+            const kristinaInfo = {
+                name: "Kristina Hanxhara",
+                title: "AI Expert & Chatbot Developer",
+                location: "London, UK",
+                availability: "Available immediately",
+                education: {
+                    current: "Master of Science in Data Science and Artificial Intelligence at University of Liverpool (April 2024 – Present)",
+                    bachelor: "Bachelor's in Business Informatics (High Honors)"
+                },
+                experience: [
+                    { title: "Panel Quality Principal Analyst", company: "GfK, London", period: "September 2022 – Present" },
+                    { title: "Recruitment Consultant", company: "Team Support, London", period: "May 2021 – June 2022" },
+                ],
+                skills: {
+                    ai: ["Chatbot Development", "Google APIs", "API Integration"],
+                    technical: ["Python", "HTML", "CSS", "JavaScript", "SQL", "MySQL"],
+                }
+            };
+            
+            chatbotButton.addEventListener('click', () => chatbotContainer.classList.add('active'));
+            closeChatbot.addEventListener('click', () => chatbotContainer.classList.remove('active'));
+
+            const addMessage = (text, isBot = false) => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${isBot ? 'bot' : 'user'}`;
+                messageDiv.textContent = text;
+                chatbotMessages.appendChild(messageDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            };
+
+            const showTypingIndicator = () => {
+                if (document.getElementById('typingIndicator')) return;
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'typing-indicator';
+                typingDiv.id = 'typingIndicator';
+                typingDiv.innerHTML = '<span></span><span></span><span></span>';
+                chatbotMessages.appendChild(typingDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            };
+
+            const hideTypingIndicator = () => {
+                const indicator = document.getElementById('typingIndicator');
+                if (indicator) indicator.remove();
+            };
+            
+            const buildContext = () => {
+                return `You are a helpful AI assistant for Kristina Hanxhara. Answer questions ONLY about her professional information. Be friendly and concise.
                 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+                Here is her information:
+                - Name: ${kristinaInfo.name}
+                - Title: ${kristinaInfo.title}
+                - Location: ${kristinaInfo.location}
+                - Availability: ${kristinaInfo.availability}
+                - Education: ${JSON.stringify(kristinaInfo.education)}
+                - Experience: ${JSON.stringify(kristinaInfo.experience)}
+                - Skills: ${JSON.stringify(kristinaInfo.skills)}
                 
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
+                IMPORTANT: If asked about anything else (weather, math, etc.), politely redirect them by saying: "I can only answer questions about Kristina's professional background. What would you like to know?"`;
+            };
+
+            const handleUserMessage = async () => {
+                const userMessage = chatbotInput.value.trim();
+                if (!userMessage) return;
+
+                addMessage(userMessage, false);
+                chatbotInput.value = '';
+                showTypingIndicator();
+
+                try {
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            prompt: buildContext(),
+                            userMessage: userMessage
+                        })
                     });
-                }
-            });
-        });
-        
-        // Scroll to top functionality
-        document.querySelector('.scroll-top').addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Initialize animations
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                const fadeElements = document.querySelectorAll('.fadeIn');
-                fadeElements.forEach(el => {
-                    const elementTop = el.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        el.classList.add('visible');
+
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok.');
                     }
-                });
-            }, 100);
+                    
+                    const data = await response.json();
+                    const botResponse = data.reply || "I'm having a bit of trouble connecting. Please try again.";
+
+                    hideTypingIndicator();
+                    addMessage(botResponse, true);
+
+                } catch (error) {
+                    console.error('Error calling API:', error);
+                    hideTypingIndicator();
+                    addMessage("Sorry, I can't connect to my brain right now. Please try again later.", true);
+                }
+            };
+
+            chatbotSend.addEventListener('click', handleUserMessage);
+            chatbotInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') handleUserMessage();
+            });
+            
+             // --- Contact Form (Email.js) ---
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                // Load Email.js script dynamically
+                const emailJsScript = document.createElement('script');
+                emailJsScript.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+                document.head.appendChild(emailJsScript);
+
+                emailJsScript.onload = () => {
+                    emailjs.init("QVGHjvdiFpc8Tk-4B"); // Your Email.js Public Key
+                    
+                    contactForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        const submitBtn = this.querySelector('button[type="submit"]');
+                        submitBtn.textContent = 'Sending...';
+
+                        emailjs.sendForm("service_wrpgjup", "template_lkh8to6", this)
+                            .then(() => {
+                                alert('Message sent successfully!');
+                                submitBtn.textContent = 'Send Message';
+                                contactForm.reset();
+                            }, (error) => {
+                                alert('Failed to send message. Please try again.');
+                                console.error('Email.js Error:', error);
+                                submitBtn.textContent = 'Send Message';
+                            });
+                    });
+                };
+            }
         });
     </script>
 </body>
