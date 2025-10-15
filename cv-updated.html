@@ -6,71 +6,56 @@
     <title>Kristina Hanxhara - CV</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Base reset */
+        /* ---------- Reset & base ---------- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html,body { height: 100%; }
-
         body {
             font-family: 'Poppins', sans-serif;
             background: #f5f5f5;
             color: #222;
+            padding: 12px;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            padding: 12px;
         }
 
-        /* Container sized to A4 width but compact */
+        /* ---------- Container ---------- */
         .cv-container {
-            max-width: 210mm;
+            max-width: 210mm; /* A4 width */
             margin: 0 auto;
             background: #fff;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.06);
             overflow: visible;
         }
 
-        /* HEADER - made more compact so content moves up the page */
+        /* ---------- Header (compact) ---------- */
         .cv-header {
-            background: linear-gradient(135deg, #7b68ee 0%, #9a7ee8 100%);
-            color: #fff;
-            padding: 22px 28px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
+            background: linear-gradient(135deg,#7b68ee 0%,#9a7ee8 100%);
+            color: white;
+            padding: 20px 26px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:12px;
         }
         .cv-header .left { max-width: 68%; }
-        .cv-header h1 {
-            font-size: 30px;
-            font-weight: 800;
-            margin-bottom: 4px;
-            letter-spacing: 0.6px;
-        }
-        .cv-header .title { font-size: 13px; font-weight: 600; opacity: 0.98; margin-bottom: 6px; }
-
-        .contact-bar {
-            display:flex;
-            gap:12px;
-            font-size:13px;
-            flex-wrap:wrap;
-            align-items:center;
-        }
+        .cv-header h1 { font-size: 30px; font-weight:800; margin-bottom:4px; letter-spacing:0.6px; }
+        .cv-header .title { font-size:13px; font-weight:600; opacity:0.98; margin-bottom:6px; }
+        .contact-bar { display:flex; gap:12px; font-size:13px; flex-wrap:wrap; align-items:center; }
         .contact-bar span { display:inline-flex; gap:8px; align-items:center; }
 
-        /* QR area - compact */
         .qr-codes-header { display:flex; gap:10px; align-items:center; }
-        .qr-code-box { background:#fff; padding:8px; border-radius:8px; width:120px; text-align:center; box-shadow:0 3px 10px rgba(0,0,0,0.12); }
-        .qr-img-small { width:100px; height:100px; object-fit:contain; display:block; margin:0 auto 6px; border-radius:6px; background:#f0f0f0; }
+        .qr-code-box { background:#fff; padding:8px; border-radius:8px; width:118px; text-align:center; box-shadow: 0 3px 10px rgba(0,0,0,0.12); }
+        .qr-img-small { width:98px; height:98px; object-fit:contain; display:block; margin:0 auto 6px; border-radius:6px; background:#f0f0f0; }
         .qr-label-small { font-size:11px; color:#7b68ee; font-weight:700; }
 
-        /* CONTENT - tighten paddings & font sizes to squeeze the first page */
-        .cv-content { padding: 20px 28px 28px; }
-        .cv-section { margin-bottom:18px; }
-
+        /* ---------- Content (tight) ---------- */
+        .cv-content { padding: 18px 26px 28px; }
+        .cv-section { margin-bottom:16px; }
         .section-title {
             color:#7b68ee;
             font-size:16px;
             font-weight:700;
-            margin-bottom:10px;
+            margin-bottom:8px;
             display:flex;
             align-items:center;
             gap:8px;
@@ -78,14 +63,12 @@
             padding-bottom:8px;
         }
 
+        /* Short combined profile */
         .profile-text {
             line-height:1.6;
             color:#333;
-            font-size:13.5px;
-            text-align:justify;
+            font-size:13.4px;
         }
-
-        /* HIGHLIGHT for Master's phrase */
         .highlight-degree {
             font-weight:700;
             color:#ff6b9d;
@@ -94,7 +77,7 @@
             border-radius:4px;
         }
 
-        /* Skills - made denser */
+        /* Core expertise dense */
         .skills-container {
             display:grid;
             grid-template-columns: repeat(2, 1fr);
@@ -102,7 +85,7 @@
         }
         .skill-group {
             background:#f8f9fa;
-            padding:12px;
+            padding:10px;
             border-radius:8px;
             border-left:3px solid #7b68ee;
         }
@@ -111,46 +94,44 @@
         .skill-group li { font-size:13px; color:#555; padding:4px 0; line-height:1.4; }
         .skill-group li::before { content:"▸ "; color:#7b68ee; font-weight:700; }
 
-        /* Portfolio + Education combined blocks: make compact and avoid page breaks individually */
-        .education-item, .portfolio-item {
+        /* Experience tight and prevented from splitting */
+        .experience-item {
+            margin-bottom:12px;
+            padding-bottom:10px;
+            border-bottom:1px solid #e6e6e6;
+            page-break-inside:avoid;
+            break-inside:avoid;
+            -webkit-column-break-inside:avoid;
+        }
+        .experience-header { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
+        .experience-title { font-size:15px; font-weight:700; color:#222; }
+        .experience-company { color:#7b68ee; font-weight:600; font-size:13px; margin-top:4px; }
+        .experience-date { background:#e8e4ff; color:#7b68ee; padding:5px 10px; border-radius:12px; font-weight:700; font-size:12px; white-space:nowrap; }
+        .experience-description ul { margin-top:8px; padding-left:18px; }
+        .experience-description li { font-size:13px; color:#555; margin-bottom:6px; line-height:1.45; }
+
+        /* Portfolio + Education compact blocks */
+        .portfolio-item, .education-item {
             background:#f8f9fa;
             padding:12px;
             border-radius:8px;
             margin-bottom:12px;
-            border-left:4px solid #ff6b9d;
-            page-break-inside: avoid;
-            break-inside: avoid;
-            -webkit-column-break-inside: avoid;
+            page-break-inside:avoid;
+            break-inside:avoid;
+            -webkit-column-break-inside:avoid;
         }
-        .portfolio-item { border-left-color: #00bfb3; }
-        .education-item h3, .portfolio-item h3 { font-size:15px; margin-bottom:6px; color:#333; }
-        .degree { color:#ff6b9d; font-weight:700; font-size:13.2px; margin-bottom:6px; display:block; }
-        .date { color:#666; font-size:12.5px; margin-bottom:8px; display:block; }
+        .portfolio-item { border-left:4px solid #00bfb3; }
+        .education-item { border-left:4px solid #ff6b9d; }
+        .portfolio-item h3, .education-item h3 { font-size:15px; margin-bottom:6px; color:#333; }
+        .degree { color:#ff6b9d; font-weight:700; font-size:13.2px; display:block; margin-bottom:6px; }
+        .date { color:#666; font-size:12.5px; display:block; margin-bottom:8px; }
 
-        /* Experience - avoid large gaps and don't let entries split across pages */
-        .experience-item {
-            margin-bottom:14px;
-            padding-bottom:12px;
-            border-bottom:1px solid #e6e6e6;
-            page-break-inside: avoid;
-            break-inside: avoid;
-            -webkit-column-break-inside: avoid;
-        }
-        .experience-header { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
-        .experience-title { font-size:15px; font-weight:700; color:#222; }
-        .experience-company { color:#7b68ee; font-weight:600; font-size:13px; margin-top:4px; }
-        .experience-date { background:#e8e4ff; color:#7b68ee; padding:5px 10px; border-radius:12px; font-weight:700; font-size:12px; white-space:nowrap; }
+        .why-text { display:none; } /* Why merged into profile; keep hidden */
 
-        .experience-description ul { margin-top:8px; padding-left:18px; }
-        .experience-description li { font-size:13px; color:#555; margin-bottom:6px; line-height:1.45; }
-
-        /* Why text */
-        .why-text { line-height:1.6; font-size:13.5px; color:#333; }
-
-        /* small placeholder for missing images */
+        /* small placeholder */
         .img-missing { width:70px; height:70px; display:flex; align-items:center; justify-content:center; border-radius:6px; background:#fff6fb; color:#ff6b9d; font-size:10px; font-weight:700; text-align:center; padding:6px; margin:0 auto 6px; }
 
-        /* print button compact */
+        /* Print button */
         .print-button {
             position: fixed;
             top: 14px;
@@ -167,29 +148,30 @@
             font-size:13px;
         }
 
-        /* PRINT rules - small margins and avoid breaks inside compact blocks */
-        @page { size: A4; margin: 10mm; }
+        /* Page-break helper to encourage 3 pages */
+        .force-page-break { page-break-after: always; break-after: page; }
+
+        /* Print rules */
+        @page { size:A4; margin: 12mm; }
         @media print {
             body { background:#fff; padding:0; }
             .cv-container { box-shadow:none; max-width:100%; }
             .print-button { display:none; }
-            /* Avoid breaks inside key blocks */
-            .cv-header, .cv-section, .experience-item, .education-item, .portfolio-item, .skill-group {
+            /* Avoid breaking inside important blocks */
+            .cv-header, .cv-section, .experience-item, .portfolio-item, .education-item, .skill-group {
                 page-break-inside: avoid;
                 break-inside: avoid;
                 -webkit-column-break-inside: avoid;
             }
-            /* Slightly reduce sizes for print compression */
+            /* Slightly reduce fonts for print */
+            .profile-text, .experience-description li, .skill-group li { font-size:12.8px; }
             .cv-header h1 { font-size:28px; }
             .section-title { font-size:15px; }
-            .skill-group h3 { font-size:13px; }
-            .profile-text, .why-text, .experience-description li, .skill-group li { font-size:12.8px; }
         }
 
-        /* Responsive for small screens */
+        /* Responsive */
         @media (max-width:720px) {
-            .cv-header { flex-direction:column; text-align:center; padding:16px; gap:8px; }
-            .cv-header .left { max-width:100%; }
+            .cv-header { flex-direction:column; text-align:center; padding:14px; gap:8px; }
             .skills-container { grid-template-columns:1fr; }
             .qr-code-box { width:100px; padding:6px; }
             .qr-img-small, .img-missing { width:86px; height:86px; }
@@ -230,20 +212,20 @@
             </div>
         </div>
 
-        <!-- Main Content -->
+        <!-- Main content -->
         <div class="cv-content">
-            <!-- Professional Profile (first paragraph with Master's highlighted) -->
+
+            <!-- PROFESSIONAL PROFILE (short + WHY merged) -->
             <div class="cv-section">
                 <div class="section-title">👤 PROFESSIONAL PROFILE</div>
                 <p class="profile-text">
-                    AI enthusiast focused on developing intelligent chatbots and automation solutions that transform businesses.
-                    Currently enhancing my expertise through a <span class="highlight-degree">Master's in Data Science and AI</span>. I create practical AI implementations
-                    using Google APIs and OpenAI APIs, with a focus on developing custom solutions that deliver measurable business value.
-                    Multilingual professional (Albanian, German, Spanish) with full-stack development skills for creating integrated AI systems.
+                    Practical AI developer building useful systems—chatbots, automation tools and AI-powered websites—that
+                    improve customer experience and business outcomes. Currently completing a <span class="highlight-degree">Master's in Data Science and AI</span>.
+                    I combine hands-on engineering (Python, APIs, web) with product-focused design to deliver measurable results.
                 </p>
             </div>
 
-            <!-- Core Expertise (dense layout to fit first page) -->
+            <!-- CORE EXPERTISE (aim to fit first page) -->
             <div class="cv-section">
                 <div class="section-title">🚀 CORE EXPERTISE</div>
                 <div class="skills-container">
@@ -253,33 +235,28 @@
                             <li>Chatbots & Virtual Assistants</li>
                             <li>Automation Tools</li>
                             <li>AI-Powered Websites</li>
-                            <li>OpenAI API Integration</li>
-                            <li>Google APIs Integration</li>
-                            <li>Computer Vision (OpenCV)</li>
+                            <li>OpenAI & LLM Integration</li>
+                            <li>Google APIs</li>
                         </ul>
                     </div>
 
                     <div class="skill-group">
-                        <h3>Technical Skills</h3>
+                        <h3>Technical</h3>
                         <ul>
-                            <li>Python Programming</li>
-                            <li>HTML, CSS, JavaScript</li>
-                            <li>SQL & MySQL</li>
-                            <li>API Development</li>
-                            <li>Website Development</li>
-                            <li>Data Analysis</li>
+                            <li>Python & JavaScript</li>
+                            <li>HTML/CSS, Frontend</li>
+                            <li>SQL & Data Analysis</li>
+                            <li>API Design & Deployment</li>
                         </ul>
                     </div>
 
                     <div class="skill-group">
-                        <h3>Implementation Areas</h3>
+                        <h3>Applications</h3>
                         <ul>
                             <li>Customer Service Automation</li>
                             <li>Content Generation</li>
-                            <li>Data Analysis Assistance</li>
-                            <li>Telegram Bots</li>
-                            <li>Website Widgets</li>
-                            <li>Web Applications</li>
+                            <li>Booking & Scheduling Widgets</li>
+                            <li>Telegram & Web Bots</li>
                         </ul>
                     </div>
 
@@ -295,7 +272,7 @@
                 </div>
             </div>
 
-            <!-- Professional Experience -->
+            <!-- PROFESSIONAL EXPERIENCE (first two items) -->
             <div class="cv-section">
                 <div class="section-title">💼 PROFESSIONAL EXPERIENCE</div>
 
@@ -309,11 +286,8 @@
                     </div>
                     <div class="experience-description">
                         <ul>
-                            <li>Design and monitor representative samples for retail analysis, ensuring data quality</li>
-                            <li>Collaborate with cross-functional teams to track KPIs and resolve data quality issues</li>
-                            <li>Deliver actionable insights by analyzing retail data, contributing to strategic decision-making</li>
-                            <li>Implement data quality monitoring systems to improve analysis reliability</li>
-                            <li>Create visual dashboards that make complex data accessible to stakeholders</li>
+                            <li>Design and monitor representative samples for retail analysis to ensure high data quality.</li>
+                            <li>Build dashboards and monitoring systems to surface issues and KPIs to stakeholders.</li>
                         </ul>
                     </div>
                 </div>
@@ -321,20 +295,26 @@
                 <div class="experience-item">
                     <div class="experience-header">
                         <div>
-                            <div class="experience-title">Recruitment Consultant and Payroll Admin</div>
+                            <div class="experience-title">Recruitment Consultant & Payroll Admin</div>
                             <div class="experience-company">Team Support, London</div>
                         </div>
                         <div class="experience-date">May 2021 – Jun 2022</div>
                     </div>
                     <div class="experience-description">
                         <ul>
-                            <li>Managed recruitment databases, ensuring accurate and up-to-date candidate information</li>
-                            <li>Sourced and analyzed candidate data to meet requirement quotas</li>
-                            <li>Coordinated with teams to meet recruitment quotas in fast-paced environments</li>
-                            <li>Used data management techniques to improve workflow efficiency</li>
+                            <li>Maintained recruitment databases and streamlined processes to improve efficiency.</li>
+                            <li>Sourced and matched candidates to client needs in fast-paced environments.</li>
                         </ul>
                     </div>
                 </div>
+            </div>
+
+            <!-- Force page break here to help create 3-page output -->
+            <div class="force-page-break"></div>
+
+            <!-- PROFESSIONAL EXPERIENCE (remaining item(s)) -->
+            <div class="cv-section">
+                <div class="section-title" style="margin-top:0">💼 PROFESSIONAL EXPERIENCE (cont.)</div>
 
                 <div class="experience-item">
                     <div class="experience-header">
@@ -346,16 +326,44 @@
                     </div>
                     <div class="experience-description">
                         <ul>
-                            <li>Conducted interviews and surveys in German, ensuring data collection accuracy</li>
-                            <li>Delivered on-time project completion while balancing multiple priorities</li>
-                            <li>Maintained high standards of data quality throughout research processes</li>
-                            <li>Contributed to multilingual research initiatives with consistent quality</li>
+                            <li>Conducted multilingual interviews (German) and ensured data collection accuracy.</li>
+                            <li>Delivered projects on time while maintaining quality in demanding schedules.</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- EDUCATION (placed before portfolio as requested) -->
+            <!-- PORTFOLIO HIGHLIGHTS (before education) -->
+            <div class="cv-section">
+                <div class="section-title">💼 PORTFOLIO HIGHLIGHTS</div>
+
+                <div class="portfolio-item">
+                    <h3>Vila Falo Resort Website</h3>
+                    <p style="font-size:13px;color:#555;margin-bottom:6px;">
+                        Full website for a luxury mountain resort with multilingual content and booking functionality.
+                    </p>
+                    <div style="font-size:13px;color:#00bfb3;font-weight:700;">🔗 www.vilafalo.com</div>
+                </div>
+
+                <div class="portfolio-item">
+                    <h3>AI Assistant Chatbot</h3>
+                    <p style="font-size:13px;color:#555;">
+                        LLM-powered assistant integrated into websites to answer questions about services and availability.
+                    </p>
+                </div>
+
+                <div class="portfolio-item">
+                    <h3>Customer Service Chatbot</h3>
+                    <p style="font-size:13px;color:#555;">
+                        Website chatbot that reduced inbound email support by ~40%; multilingual and easy to integrate.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Force page break so Education appears on last page -->
+            <div class="force-page-break"></div>
+
+            <!-- EDUCATION (last page) -->
             <div class="cv-section">
                 <div class="section-title">🎓 EDUCATION</div>
 
@@ -363,9 +371,9 @@
                     <h3>Master of Science, Data Science and Artificial Intelligence</h3>
                     <span class="degree">University of Liverpool</span>
                     <span class="date">April 2024 – Present</span>
-                    <ul style="margin-top:8px; padding-left:18px;">
-                        <li>Focus on practical applications of AI, including chatbot development and automated systems</li>
-                        <li>Developing skills in Python programming, API integration, and web-based AI solutions</li>
+                    <ul style="margin-top:8px;padding-left:18px;">
+                        <li>Practical AI applications: chatbot development, automated systems.</li>
+                        <li>Focus on Python, APIs, and deployable web AI solutions.</li>
                     </ul>
                 </div>
 
@@ -373,65 +381,26 @@
                     <h3>Bachelor's in Business Informatics (with High Honors)</h3>
                     <span class="degree">University of Korca "Fan Noli", Albania</span>
                     <span class="date">October 2018 – October 2021</span>
-                    <ul style="margin-top:8px; padding-left:18px;">
-                        <li>Thesis: "Web Technologies for Business Automation"</li>
-                        <li>Graduated top of class with focus on applying technology to business challenges</li>
+                    <ul style="margin-top:8px;padding-left:18px;">
+                        <li>Thesis: "Web Technologies for Business Automation".</li>
+                        <li>Graduated top of class.</li>
                     </ul>
                 </div>
 
                 <div class="education-item">
                     <h3>Technical Certifications</h3>
-                    <ul style="margin-top:8px; padding-left:18px;">
+                    <ul style="margin-top:8px;padding-left:18px;">
                         <li>Front-End Development (HTML, CSS, JavaScript) – ATC, Albania</li>
                         <li>Finance 5, AlphaWeb – TCT, Albania</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- PORTFOLIO (after education) -->
-            <div class="cv-section">
-                <div class="section-title">💼 PORTFOLIO HIGHLIGHTS</div>
-
-                <div class="portfolio-item">
-                    <h3>Vila Falo Resort Website</h3>
-                    <p style="font-size:13px; color:#555; margin-bottom:6px;">
-                        Complete business website for a luxury mountain resort. Features multilingual content, booking system and responsive design.
-                        Developed using Python, JavaScript, HTML/CSS, deployed to cloud hosting.
-                    </p>
-                    <div style="font-size:13px; color:#00bfb3; font-weight:700;">🔗 www.vilafalo.com</div>
-                </div>
-
-                <div class="portfolio-item">
-                    <h3>AI Assistant Chatbot</h3>
-                    <p style="font-size:13px; color:#555;">
-                        Intelligent assistant using modern LLM APIs that answers questions about professional experience, skills, and availability.
-                        Integrated into website as a standalone application.
-                    </p>
-                </div>
-
-                <div class="portfolio-item">
-                    <h3>Customer Service Chatbot</h3>
-                    <p style="font-size:13px; color:#555;">
-                        Website chatbot that answers common customer questions, reducing email inquiries by ~40%. Implemented using OpenAI API with multilingual support.
-                    </p>
-                </div>
-            </div>
-
-            <!-- WHY -->
-            <div class="cv-section">
-                <div class="section-title">⭐ WHY I'M THE RIGHT AI EXPERT FOR YOUR BUSINESS</div>
-                <p class="why-text">
-                    I'm passionate about creating practical AI solutions that deliver real business value. My approach combines solid technical skills (Python,
-                    APIs, web development) with a focus on user experience and business outcomes. I build systems that are accessible, useful, and effective—
-                    whether that's a customer service chatbot, an AI-powered website, or a custom automation tool.
-                </p>
-            </div>
-        </div>
-    </div>
+        </div> <!-- end cv-content -->
+    </div> <!-- end cv-container -->
 
     <script>
-        // placeholder for any future JS; not required for print functionality.
-        // the <img onerror> attribute will reveal the placeholder element when QR images are missing.
+        // No JS required for print; img onerror reveals placeholders already inlined.
     </script>
 </body>
 </html>
