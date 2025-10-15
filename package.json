@@ -2,7 +2,7 @@
   "name": "kristinacv",
   "version": "1.0.0",
   "description": "Welcome to my professional portfolio repository! This is where I showcase my AI development skills and projects.",
-  "main": "config.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
