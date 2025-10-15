@@ -56,6 +56,18 @@
             font-size: 14px;
         }
 
+        .url-display {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #7b68ee;
+            word-break: break-all;
+            border: 2px solid #e8e4ff;
+        }
+
         #qrcode1, #qrcode2 {
             display: inline-block;
             padding: 20px;
@@ -104,6 +116,15 @@
         .info li {
             margin-bottom: 8px;
         }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #28a745;
+        }
     </style>
 </head>
 <body>
@@ -113,17 +134,24 @@
         <div class="qr-section">
             <h2>🌐 Website QR Code</h2>
             <p>Scan to visit Kristina's portfolio website</p>
+            <div class="url-display">https://kristina-hanxhara9.github.io/CV/</div>
             <div id="qrcode1"></div>
             <br>
-            <button class="download-btn" onclick="downloadQR('qrcode1', 'Website-QR-Code.png')">Download Website QR</button>
+            <button class="download-btn" onclick="downloadQR('qrcode1', 'Website-QR-Code.png')">📥 Download Website QR</button>
         </div>
 
         <div class="qr-section">
             <h2>💬 Chatbot QR Code</h2>
             <p>Scan to chat with Kristina's AI Assistant</p>
+            <div class="url-display">https://kristina-hanxhara9.github.io/CV/chatbot.html</div>
             <div id="qrcode2"></div>
             <br>
-            <button class="download-btn" onclick="downloadQR('qrcode2', 'Chatbot-QR-Code.png')">Download Chatbot QR</button>
+            <button class="download-btn" onclick="downloadQR('qrcode2', 'Chatbot-QR-Code.png')">📥 Download Chatbot QR</button>
+        </div>
+
+        <div class="success">
+            <strong>✅ QR Codes Generated Successfully!</strong><br>
+            Your QR codes are ready. Click the download buttons above to save them.
         </div>
 
         <div class="info">
@@ -134,6 +162,7 @@
                 <li>Website QR: Links to your full portfolio</li>
                 <li>Chatbot QR: Links directly to your AI assistant chat</li>
                 <li>Test them with your phone before printing!</li>
+                <li>Print on high-quality paper for best results</li>
             </ul>
         </div>
     </div>
@@ -142,7 +171,7 @@
     <script>
         // Generate QR Code for Website
         new QRCode(document.getElementById("qrcode1"), {
-            text: "https://yourusername.github.io/KristinaCV/",  // Replace with your actual website URL
+            text: "https://kristina-hanxhara9.github.io/CV/",
             width: 200,
             height: 200,
             colorDark: "#7b68ee",
@@ -152,7 +181,7 @@
 
         // Generate QR Code for Chatbot
         new QRCode(document.getElementById("qrcode2"), {
-            text: "https://yourusername.github.io/KristinaCV/chatbot.html",  // Replace with your actual chatbot URL
+            text: "https://kristina-hanxhara9.github.io/CV/chatbot.html",
             width: 200,
             height: 200,
             colorDark: "#00bfb3",
@@ -168,8 +197,18 @@
                 link.download = filename;
                 link.href = url;
                 link.click();
+                
+                // Show success message
+                alert('✅ QR Code downloaded successfully! You can now add it to your CV.');
             }
         }
+
+        // Test QR codes on load
+        window.addEventListener('load', () => {
+            console.log('✅ QR Codes generated successfully!');
+            console.log('Website URL: https://kristina-hanxhara9.github.io/CV/');
+            console.log('Chatbot URL: https://kristina-hanxhara9.github.io/CV/chatbot.html');
+        });
     </script>
 </body>
 </html>
