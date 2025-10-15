@@ -1,415 +1,270 @@
-<!--
-  Place your QR code PNG files in the same folder as this HTML file OR replace the image `src` attributes
-  below with the exact file names or absolute URLs to your PNGs.
-
-  Example filenames used in this file:
-    - qr-website.png   (for the portfolio/website QR)
-    - qr-chatbot.png   (for the chatbot QR)
-
-  You can also use data-URI (base64) if you'd like to embed the PNGs directly.
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Kristina Hanxhara - CV</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
+    <!-- Font (keeps look similar) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================
+           Layout & base styles
+           ============================ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Poppins', sans-serif;
             background: #f5f5f5;
             padding: 20px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: #222;
         }
 
+        /* A4-friendly container */
         .cv-container {
-            max-width: 8.5in;
+            max-width: 210mm; /* A4 width */
             margin: 0 auto;
             background: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px rgba(0,0,0,0.08);
+            overflow: visible;
         }
 
-        /* Header */
+        /* ============================
+           Header
+           ============================ */
         .cv-header {
             background: linear-gradient(135deg, #7b68ee 0%, #9a7ee8 100%);
             color: white;
-            padding: 40px 50px;
-            /* switch to a two-column layout so name/info sits left and QR codes on the right */
+            padding: 36px 44px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             text-align: left;
-            position: relative;
+            gap: 20px;
         }
 
-        .cv-header .left {
-            max-width: 65%;
-        }
-
+        .cv-header .left { max-width: 66%; }
         .cv-header h1 {
-            font-size: 46px;
+            font-size: 40px;
             font-weight: 800;
             margin-bottom: 6px;
             letter-spacing: 1px;
         }
-
         .cv-header .title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 500;
             margin-bottom: 12px;
             opacity: 0.95;
         }
-
         .contact-bar {
-            display: flex;
-            justify-content: flex-start;
-            flex-wrap: wrap;
-            gap: 18px;
-            font-size: 14px;
+            display:flex;
+            flex-wrap:wrap;
+            gap:14px;
+            font-size:14px;
+            align-items:center;
         }
+        .contact-bar span { display:flex; align-items:center; gap:8px; }
 
-        .contact-bar span {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* QR Codes in Header */
-        /* now placed on the right side (not absolutely positioned) so they don't overlap the name */
-        .qr-codes-header {
-            display: flex;
-            gap: 18px;
-            align-items: center;
-        }
-
+        .qr-codes-header { display:flex; gap:16px; align-items:center; }
         .qr-code-box {
             background: white;
-            padding: 12px;
+            padding: 10px;
             border-radius: 8px;
             text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            width: 160px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            width: 150px;
         }
-
-        /* larger QR image variant */
         .qr-img-small {
-            width: 140px;
-            height: 140px;
+            width: 128px;
+            height: 128px;
             object-fit: contain;
             border-radius: 6px;
-            display: block;
-            margin: 0 auto 8px auto;
+            display:block;
+            margin: 0 auto 8px;
             background: #f0f0f0;
         }
+        .qr-label-small { font-size:12px; color:#7b68ee; font-weight:700; }
 
-        .qr-placeholder-small {
-            width: 140px;
-            height: 140px;
-            background: #f0f0f0;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            color: #7b68ee;
-            font-weight: 600;
-            margin-bottom: 6px;
-            text-align: center;
-            line-height: 1.2;
-        }
+        /* ============================
+           Main content
+           ============================ */
+        .cv-content { padding: 36px 44px; }
 
-        .qr-label-small {
-            font-size: 12px;
-            color: #7b68ee;
-            font-weight: 700;
-        }
-
-        /* responsive: stack on small screens */
-        @media (max-width: 720px) {
-            .cv-header {
-                flex-direction: column;
-                text-align: center;
-                padding: 30px 20px;
-            }
-
-            .cv-header .left {
-                max-width: 100%;
-            }
-
-            .contact-bar {
-                justify-content: center;
-            }
-
-            .qr-codes-header {
-                margin-top: 18px;
-            }
-
-            .qr-code-box {
-                width: 120px;
-                padding: 10px;
-            }
-
-            .qr-img-small, .qr-placeholder-small {
-                width: 100px;
-                height: 100px;
-            }
-        }
-
-        /* Main Content */
-        .cv-content {
-            padding: 40px 50px;
-        }
-
-        .cv-section {
-            margin-bottom: 35px;
-        }
+        .cv-section { margin-bottom: 28px; }
 
         .section-title {
             color: #7b68ee;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
             border-bottom: 3px solid #e8e4ff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            display:flex;
+            align-items:center;
+            gap:10px;
         }
 
         .profile-text {
-            line-height: 1.8;
+            line-height: 1.75;
             color: #333;
             text-align: justify;
         }
 
-        /* Skills */
+        /* Skills grid */
         .skills-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 18px;
         }
-
         .skill-group {
             background: #f8f9fa;
-            padding: 20px;
+            padding: 16px;
             border-radius: 8px;
             border-left: 4px solid #7b68ee;
         }
-
-        .skill-group h3 {
-            color: #7b68ee;
-            font-size: 16px;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .skill-group ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .skill-group li {
-            padding: 5px 0;
-            color: #555;
-            font-size: 14px;
-        }
-
-        .skill-group li::before {
-            content: "▸ ";
-            color: #7b68ee;
-            font-weight: bold;
-        }
+        .skill-group h3 { color:#7b68ee; font-size:15px; margin-bottom:10px; font-weight:600; }
+        .skill-group ul { list-style:none; padding-left:0; }
+        .skill-group li { padding:6px 0; color:#555; font-size:14px; }
+        .skill-group li::before { content: "▸ "; color:#7b68ee; font-weight:700; }
 
         /* Portfolio */
         .portfolio-item {
-            margin-bottom: 20px;
-            padding: 20px;
+            margin-bottom: 18px;
+            padding: 18px;
             background: #f8f9fa;
             border-radius: 8px;
             border-left: 4px solid #00bfb3;
         }
-
-        .portfolio-item h3 {
-            color: #00bfb3;
-            font-size: 16px;
-            margin-bottom: 8px;
-        }
-
-        .portfolio-item p {
-            color: #555;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .portfolio-link {
-            color: #00bfb3;
-            font-weight: 600;
-            font-size: 13px;
-            text-decoration: none;
-        }
+        .portfolio-item h3 { color:#00bfb3; font-size:16px; margin-bottom:8px; }
+        .portfolio-item p { color:#555; font-size:14px; line-height:1.6; margin-bottom:8px; }
+        .portfolio-link { color:#00bfb3; font-weight:600; font-size:13px; text-decoration:none; }
 
         /* Experience */
         .experience-item {
-            margin-bottom: 25px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 22px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #e6e6e6;
+            page-break-inside: avoid; /* do not break inside this item */
+            break-inside: avoid;
+            -webkit-column-break-inside: avoid;
         }
-
-        .experience-item:last-child {
-            border-bottom: none;
-        }
-
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 10px;
-        }
-
-        .experience-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .experience-company {
-            font-size: 15px;
-            color: #7b68ee;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-
+        .experience-item:last-child { border-bottom:none; }
+        .experience-header { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+        .experience-title { font-size:18px; font-weight:600; color:#222; }
+        .experience-company { font-size:15px; color:#7b68ee; font-weight:500; margin-bottom:6px; }
         .experience-date {
-            background: #e8e4ff;
-            color: #7b68ee;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: 600;
-            white-space: nowrap;
+            background:#e8e4ff;
+            color:#7b68ee;
+            padding:6px 12px;
+            border-radius:14px;
+            font-size:12px;
+            font-weight:600;
+            white-space:nowrap;
         }
-
-        .experience-description ul {
-            margin-top: 10px;
-            padding-left: 20px;
-        }
-
-        .experience-description li {
-            margin-bottom: 8px;
-            color: #555;
-            font-size: 14px;
-            line-height: 1.6;
-        }
+        .experience-description ul { margin-top:10px; padding-left:20px; }
+        .experience-description li { margin-bottom:8px; color:#555; font-size:14px; line-height:1.6; }
 
         /* Education */
         .education-item {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            background:#f8f9fa;
+            padding:16px;
+            border-radius:8px;
+            margin-bottom:16px;
             border-left: 4px solid #ff6b9d;
+            page-break-inside: avoid;
+            break-inside: avoid;
+            -webkit-column-break-inside: avoid;
         }
+        .education-item h3 { color:#333; font-size:18px; margin-bottom:6px; }
+        .education-item .degree { color:#ff6b9d; font-size:15px; font-weight:600; margin-bottom:6px; }
+        .education-item .date { color:#777; font-size:13px; margin-bottom:10px; }
+        .education-item ul { padding-left:20px; margin-top:8px; }
+        .education-item li { color:#555; font-size:14px; margin-bottom:6px; line-height:1.5; }
 
-        .education-item h3 {
-            color: #333;
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
+        /* Why choose me */
+        .why-text { line-height:1.75; color:#333; }
 
-        .education-item .degree {
-            color: #ff6b9d;
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .education-item .date {
-            color: #777;
-            font-size: 13px;
-            margin-bottom: 12px;
-        }
-
-        .education-item ul {
-            padding-left: 20px;
-            margin-top: 10px;
-        }
-
-        .education-item li {
-            color: #555;
-            font-size: 14px;
-            margin-bottom: 6px;
-            line-height: 1.5;
-        }
-
-        /* Print Styles */
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-
-            .cv-container {
-                box-shadow: none;
-                max-width: 100%;
-            }
-
-            .print-button {
-                display: none;
-            }
-        }
-
-        .print-button {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #7b68ee, #9a7ee8);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(123, 104, 238, 0.3);
-            z-index: 1000;
-        }
-
-        .print-button:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Icons using text */
-        .icon {
-            display: inline-block;
-            width: 16px;
-            text-align: center;
-        }
-
-        /* small helper for when image missing */
+        /* small placeholders */
         .img-missing {
             width: 80px;
             height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px;
-            background: #fff6fb;
-            color: #ff6b9d;
-            font-size: 10px;
-            font-weight: 700;
-            text-align: center;
-            padding: 6px;
-            margin: 0 auto 6px auto;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border-radius:5px;
+            background:#fff6fb;
+            color:#ff6b9d;
+            font-size:10px;
+            font-weight:700;
+            text-align:center;
+            padding:6px;
+            margin: 0 auto 6px;
         }
 
+        /* print button */
+        .print-button {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            background: linear-gradient(135deg, #7b68ee, #9a7ee8);
+            color:white;
+            border:none;
+            padding:10px 20px;
+            border-radius:22px;
+            font-size:14px;
+            font-weight:600;
+            cursor:pointer;
+            z-index:1000;
+            box-shadow: 0 5px 15px rgba(123,104,238,0.25);
+        }
+
+        /* icons */
+        .icon { display:inline-block; width:16px; text-align:center; }
+
+        /* ============================
+           Print-specific styles
+           ============================ */
+        @page {
+            size: A4;
+            margin: 12mm; /* comfortable print margins */
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .cv-container { box-shadow:none; max-width: 100%; }
+            .print-button { display: none; }
+
+            /* Prevent breaking inside key blocks */
+            .cv-header, .cv-section, .experience-item, .portfolio-item, .education-item, .skill-group {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                -webkit-column-break-inside: avoid;
+            }
+
+            /* Keep small groups together */
+            .skills-container, .cv-content { widows: 3; orphans: 3; }
+
+            /* Reduce padding slightly to fit */
+            .cv-header { padding: 24px 28px; }
+            .cv-content { padding: 24px 28px; }
+
+            /* Ensure QR boxes don't overflow */
+            .qr-code-box { page-break-inside: avoid; break-inside: avoid; }
+        }
+
+        /* ============================
+           Responsive tweaks
+           ============================ */
+        @media (max-width: 720px) {
+            .cv-header { flex-direction: column; text-align:center; padding:26px 18px; gap:12px; }
+            .cv-header .left { max-width:100%; }
+            .contact-bar { justify-content:center; }
+            .qr-code-box { width:120px; padding:10px; }
+            .qr-img-small, .img-missing { width:100px; height:100px; }
+            .skills-container { grid-template-columns:1fr; }
+        }
     </style>
 </head>
 <body>
@@ -430,22 +285,16 @@
             </div>
 
             <div class="right">
-                <!-- QR Codes aligned to the right, larger size -->
                 <div class="qr-codes-header" aria-hidden="false">
-                    <!-- Website QR: replace src with your PNG file or URL -->
                     <div class="qr-code-box">
-                        <a href="qr-website.png" target="_blank" aria-label="Open website QR in new tab">
-                            <img class="qr-img-small" src="./Website-QR-Code.png" alt="Website QR code" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
-                        </a>
+                        <!-- If you have a PNG, put the file in same folder and update src -->
+                        <img class="qr-img-small" src="./Website-QR-Code.png" alt="Website QR code" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                         <div class="img-missing" style="display:none;">Place<br>qr-website.png</div>
                         <div class="qr-label-small">Portfolio</div>
                     </div>
 
-                    <!-- Chatbot QR: replace src with your PNG file or URL -->
                     <div class="qr-code-box">
-                        <a href="qr-chatbot.png" target="_blank" aria-label="Open chatbot QR in new tab">
-                            <img class="qr-img-small" src="./Chatbot-QR-Code.png" alt="Chatbot QR code" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
-                        </a>
+                        <img class="qr-img-small" src="./Chatbot-QR-Code.png" alt="Chatbot QR code" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                         <div class="img-missing" style="display:none;">Place<br>qr-chatbot.png</div>
                         <div class="qr-label-small">AI Chat</div>
                     </div>
@@ -459,12 +308,10 @@
             <div class="cv-section">
                 <div class="section-title">👤 PROFESSIONAL PROFILE</div>
                 <p class="profile-text">
-                    AI enthusiast focused on developing intelligent chatbots and automation solutions that transform 
-                    businesses. Currently enhancing my expertise through a Master's in Data Science and AI at the 
-                    University of Liverpool. I create practical AI implementations using Google APIs and OpenAI APIs, 
-                    with a focus on developing custom solutions that deliver measurable business value. Multilingual 
-                    professional (Albanian, German, Spanish) with full-stack development skills for creating integrated 
-                    AI systems.
+                    AI enthusiast focused on developing intelligent chatbots and automation solutions that transform businesses.
+                    Currently enhancing my expertise through a Master's in Data Science and AI. I create practical AI implementations
+                    using Google APIs and OpenAI APIs, with a focus on developing custom solutions that deliver measurable business value.
+                    Multilingual professional (Albanian, German, Spanish) with full-stack development skills for creating integrated AI systems.
                 </p>
             </div>
 
@@ -483,6 +330,7 @@
                             <li>Computer Vision (OpenCV)</li>
                         </ul>
                     </div>
+
                     <div class="skill-group">
                         <h3>Technical Skills</h3>
                         <ul>
@@ -494,6 +342,7 @@
                             <li>Data Analysis</li>
                         </ul>
                     </div>
+
                     <div class="skill-group">
                         <h3>Implementation Areas</h3>
                         <ul>
@@ -505,6 +354,7 @@
                             <li>Web Applications</li>
                         </ul>
                     </div>
+
                     <div class="skill-group">
                         <h3>Languages</h3>
                         <ul>
@@ -520,31 +370,28 @@
             <!-- Portfolio Highlights -->
             <div class="cv-section">
                 <div class="section-title">💼 PORTFOLIO HIGHLIGHTS</div>
-                
+
                 <div class="portfolio-item">
                     <h3>Vila Falo Resort Website</h3>
                     <p>
-                        Complete business website for a luxury mountain resort in Albania. Features multilingual content, 
-                        booking system, restaurant menus, and responsive design. Developed using Python, JavaScript, 
-                        HTML/CSS, and deployed on Heroku.
+                        Complete business website for a luxury mountain resort. Features multilingual content, booking system, restaurant menus, and responsive design.
+                        Developed using Python, JavaScript, HTML/CSS, and deployed to a cloud hosting provider.
                     </p>
-                    <a href="http://www.vilafalo.com/" class="portfolio-link">🔗 www.vilafalo.com</a>
+                    <div class="portfolio-link">🔗 www.vilafalo.com</div>
                 </div>
 
                 <div class="portfolio-item">
                     <h3>AI Assistant Chatbot</h3>
                     <p>
-                        Intelligent assistant using Google Gemini API that answers questions about professional experience, 
-                        skills, and availability. Integrated into website and available as standalone application. 
-                        Demonstrates advanced NLP and conversational AI capabilities.
+                        Intelligent assistant using modern LLM APIs that answers questions about professional experience, skills, and availability.
+                        Integrated into website and available as standalone application.
                     </p>
                 </div>
 
                 <div class="portfolio-item">
                     <h3>Customer Service Chatbot</h3>
                     <p>
-                        Developed a website chatbot that answers common customer questions, reducing email inquiries by 40%. 
-                        Implemented using OpenAI API with multilingual support and seamless website integration.
+                        Website chatbot that answers common customer questions, reducing email inquiries by ~40%. Implemented using OpenAI API with multilingual support.
                     </p>
                 </div>
             </div>
@@ -552,7 +399,7 @@
             <!-- Professional Experience -->
             <div class="cv-section">
                 <div class="section-title">💼 PROFESSIONAL EXPERIENCE</div>
-                
+
                 <div class="experience-item">
                     <div class="experience-header">
                         <div>
@@ -600,7 +447,7 @@
                     </div>
                     <div class="experience-description">
                         <ul>
-                            <li>Conducted interviews and surveys in the German language, ensuring data collection accuracy</li>
+                            <li>Conducted interviews and surveys in German, ensuring data collection accuracy</li>
                             <li>Delivered on-time project completion while balancing multiple priorities</li>
                             <li>Maintained high standards of data quality throughout research processes</li>
                             <li>Contributed to multilingual research initiatives with consistent quality</li>
@@ -612,7 +459,7 @@
             <!-- Education -->
             <div class="cv-section">
                 <div class="section-title">🎓 EDUCATION</div>
-                
+
                 <div class="education-item">
                     <h3>Master of Science, Data Science and Artificial Intelligence</h3>
                     <div class="degree">University of Liverpool</div>
@@ -645,22 +492,22 @@
             <!-- Why Choose Me -->
             <div class="cv-section">
                 <div class="section-title">⭐ WHY I'M THE RIGHT AI EXPERT FOR YOUR BUSINESS</div>
-                <p class="profile-text">
-                    I'm passionate about creating practical AI solutions that deliver real business value. My approach 
-                    combines solid technical skills (Python, APIs, web development) with a focus on user experience and 
-                    business outcomes. I build systems that are accessible, useful, and effective—whether that's a 
-                    customer service chatbot, an AI-powered website, or a custom automation tool. With my multilingual 
-                    capabilities and full-stack development skills, I can create comprehensive solutions that work for 
-                    diverse audiences and integrate seamlessly with existing systems.
+                <p class="why-text">
+                    I'm passionate about creating practical AI solutions that deliver real business value. My approach combines
+                    solid technical skills (Python, APIs, web development) with a focus on user experience and business outcomes.
+                    I build systems that are accessible, useful, and effective—whether that's a customer service chatbot, an AI-powered
+                    website, or a custom automation tool. With multilingual capabilities and full-stack development skills, I create
+                    comprehensive solutions that work for diverse audiences and integrate seamlessly with existing systems.
                 </p>
             </div>
         </div>
     </div>
 
     <script>
-        // Small script to toggle missing-image placeholders when onerror triggers.
-        // The <img onerror> calls hide the image and reveal the next .img-missing element.
-        // No-js fallback: placeholder boxes are visible in CSS if you prefer.
+        // Toggle missing-image placeholders when <img onerror> triggers.
+        // The <img onerror> already hides the image and reveals the placeholder element.
+        // No additional JS required; this is a safe no-op placeholder for future tweaks.
     </script>
 </body>
 </html>
+
