@@ -1,6 +1,7 @@
 // Import necessary libraries
 require('dotenv').config(); // Loads environment variables from .env file
 const express = require('express');
+const cors = require('cors'); // <-- ADD THIS LINE
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 // Initialize Express app and Google AI
@@ -8,9 +9,21 @@ const app = express();
 const port = 3000;
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-// Middleware to parse JSON bodies and serve static files
+// --- ADD THIS SECTION FOR CORS ---
+// Define the allowed origin for CORS
+const corsOptions = {
+  origin: 'https://kristina-hanxhara9.github.io'
+};
+// Use the cors middleware with your options
+app.use(cors(corsOptions));
+// ---------------------------------
+
+// Middleware to parse JSON bodies
 app.use(express.json());
-app.use(express.static(__dirname)); // Serve files from the current directory
+
+// NOTE: I have removed `app.use(express.static(__dirname));` and the app.get('/') route
+// because Vercel will handle serving the API, and GitHub Pages will serve your HTML.
+// This keeps the server's job focused on just the API.
 
 // Define the API endpoint that the front-end will call
 app.post('/api/generate', async (req, res) => {
@@ -24,10 +37,10 @@ app.post('/api/generate', async (req, res) => {
 
     // Get the generative model
     const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
-    
+
     // Construct the full prompt for the model
     const fullPrompt = `${prompt}\n\nUser Question: "${userMessage}"\n\nAI Assistant Response:`;
-    
+
     // Generate content
     const result = await model.generateContent(fullPrompt);
     const response = await result.response;
@@ -40,11 +53,6 @@ app.post('/api/generate', async (req, res) => {
     console.error('Error calling Gemini API:', error);
     res.status(500).json({ error: 'Failed to generate response from AI' });
   }
-});
-
-// Serve the main chatbot HTML file
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/chatbot.html');
 });
 
 // Start the server
