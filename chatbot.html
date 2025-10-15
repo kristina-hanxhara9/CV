@@ -188,7 +188,8 @@ IMPORTANT RULES:
       // Sends { prompt, userMessage } to a server-side endpoint /api/generate
       // Server must attach the API key and call Gemini (or other model).
       try {
-        const resp = await fetch('/api/generate', {
+        // Replace the old line with this one
+const resp = await fetch('https://cv-five-self.vercel.app/api/generate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
