@@ -41,30 +41,38 @@
         .cv-header {
             background: linear-gradient(135deg, #7b68ee 0%, #9a7ee8 100%);
             color: white;
-            padding: 50px;
-            text-align: center;
+            padding: 40px 50px;
+            /* switch to a two-column layout so name/info sits left and QR codes on the right */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
             position: relative;
         }
 
+        .cv-header .left {
+            max-width: 65%;
+        }
+
         .cv-header h1 {
-            font-size: 42px;
+            font-size: 46px;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             letter-spacing: 1px;
         }
 
         .cv-header .title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 500;
-            margin-bottom: 25px;
+            margin-bottom: 12px;
             opacity: 0.95;
         }
 
         .contact-bar {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: wrap;
-            gap: 25px;
+            gap: 18px;
             font-size: 14px;
         }
 
@@ -75,54 +83,84 @@
         }
 
         /* QR Codes in Header */
+        /* now placed on the right side (not absolutely positioned) so they don't overlap the name */
         .qr-codes-header {
-            position: absolute;
-            top: 20px;
-            right: 20px;
             display: flex;
-            gap: 15px;
+            gap: 18px;
+            align-items: center;
         }
 
         .qr-code-box {
             background: white;
-            padding: 10px;
+            padding: 12px;
             border-radius: 8px;
             text-align: center;
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            width: 100px;
+            width: 160px;
         }
 
-        /* small image variant for QR */
+        /* larger QR image variant */
         .qr-img-small {
-            width: 80px;
-            height: 80px;
+            width: 140px;
+            height: 140px;
             object-fit: contain;
-            border-radius: 5px;
+            border-radius: 6px;
             display: block;
-            margin: 0 auto 6px auto;
+            margin: 0 auto 8px auto;
             background: #f0f0f0;
         }
 
         .qr-placeholder-small {
-            width: 80px;
-            height: 80px;
+            width: 140px;
+            height: 140px;
             background: #f0f0f0;
-            border-radius: 5px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 9px;
+            font-size: 11px;
             color: #7b68ee;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             text-align: center;
             line-height: 1.2;
         }
 
         .qr-label-small {
-            font-size: 9px;
+            font-size: 12px;
             color: #7b68ee;
-            font-weight: 600;
+            font-weight: 700;
+        }
+
+        /* responsive: stack on small screens */
+        @media (max-width: 720px) {
+            .cv-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+
+            .cv-header .left {
+                max-width: 100%;
+            }
+
+            .contact-bar {
+                justify-content: center;
+            }
+
+            .qr-codes-header {
+                margin-top: 18px;
+            }
+
+            .qr-code-box {
+                width: 120px;
+                padding: 10px;
+            }
+
+            .qr-img-small, .qr-placeholder-small {
+                width: 100px;
+                height: 100px;
+            }
         }
 
         /* Main Content */
@@ -380,36 +418,40 @@
     <div class="cv-container">
         <!-- Header -->
         <div class="cv-header">
-            <!-- QR Codes -->
-            <div class="qr-codes-header">
-                <!-- Website QR: replace src with your PNG file or URL -->
-                <div class="qr-code-box">
-                    <a href="qr-website.png" target="_blank" aria-label="Open website QR in new tab">
-                        <img class="qr-img-small" src="/Users/kristinahanxhara/Desktop/KristinaCV/Website-QR-Code.png" alt="Website QR code" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
-                    </a>
-                    <div class="img-missing" style="display:none;">Place<br>qr-website.png</div>
-                    <div class="qr-label-small">Portfolio</div>
-                </div>
-
-                <!-- Chatbot QR: replace src with your PNG file or URL -->
-                <div class="qr-code-box">
-                    <a href="qr-chatbot.png" target="_blank" aria-label="Open chatbot QR in new tab">
-                        <img class="qr-img-small" src="/Users/kristinahanxhara/Desktop/KristinaCV/Chatbot-QR-Code.png" alt="Chatbot QR code" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
-                    </a>
-                    <div class="img-missing" style="display:none;">Place<br>qr-chatbot.png</div>
-                    <div class="qr-label-small">AI Chat</div>
+            <div class="left">
+                <h1>KRISTINA HANXHARA</h1>
+                <div class="title">AI Expert & Chatbot Developer</div>
+                <div class="contact-bar">
+                    <span>📍 London, UK</span>
+                    <span>📧 kristinazhi97@gmail.com</span>
+                    <span>📱 07497391831</span>
+                    <span>🔗 LinkedIn</span>
                 </div>
             </div>
 
-            <h1>KRISTINA HANXHARA</h1>
-            <div class="title">AI Expert & Chatbot Developer</div>
-            <div class="contact-bar">
-                <span>📍 London, UK</span>
-                <span>📧 kristinazhi97@gmail.com</span>
-                <span>📱 07497391831</span>
-                <span>🔗 LinkedIn</span>
+            <div class="right">
+                <!-- QR Codes aligned to the right, larger size -->
+                <div class="qr-codes-header" aria-hidden="false">
+                    <!-- Website QR: replace src with your PNG file or URL -->
+                    <div class="qr-code-box">
+                        <a href="qr-website.png" target="_blank" aria-label="Open website QR in new tab">
+                            <img class="qr-img-small" src="qr-website.png" alt="Website QR code" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
+                        </a>
+                        <div class="img-missing" style="display:none;">Place<br>qr-website.png</div>
+                        <div class="qr-label-small">Portfolio</div>
+                    </div>
+
+                    <!-- Chatbot QR: replace src with your PNG file or URL -->
+                    <div class="qr-code-box">
+                        <a href="qr-chatbot.png" target="_blank" aria-label="Open chatbot QR in new tab">
+                            <img class="qr-img-small" src="qr-chatbot.png" alt="Chatbot QR code" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
+                        </a>
+                        <div class="img-missing" style="display:none;">Place<br>qr-chatbot.png</div>
+                        <div class="qr-label-small">AI Chat</div>
+                    </div>
+                </div>
             </div>
-        </div>                              
+        </div>
 
         <!-- Main Content -->
         <div class="cv-content">
