@@ -6,5 +6,5 @@
 // 4. NEVER commit config.js to GitHub - it's in .gitignore for your safety!
 
 const CONFIG = {
-    GEMINI_API_KEY: 'YOUR_GEMINI_API_KEY_HERE'
+    GEMINI_API_KEY: 'AIzaSyDRHsH4vwcRmy4QqyogkVFKV2p7x6WXUeI'
 };

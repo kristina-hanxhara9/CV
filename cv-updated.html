@@ -1,3 +1,14 @@
+<!--
+  Place your QR code PNG files in the same folder as this HTML file OR replace the image `src` attributes
+  below with the exact file names or absolute URLs to your PNGs.
+
+  Example filenames used in this file:
+    - qr-website.png   (for the portfolio/website QR)
+    - qr-chatbot.png   (for the chatbot QR)
+
+  You can also use data-URI (base64) if you'd like to embed the PNGs directly.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,6 +89,18 @@
             border-radius: 8px;
             text-align: center;
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            width: 100px;
+        }
+
+        /* small image variant for QR */
+        .qr-img-small {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 5px;
+            display: block;
+            margin: 0 auto 6px auto;
+            background: #f0f0f0;
         }
 
         .qr-placeholder-small {
@@ -331,6 +354,24 @@
             width: 16px;
             text-align: center;
         }
+
+        /* small helper for when image missing */
+        .img-missing {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            background: #fff6fb;
+            color: #ff6b9d;
+            font-size: 10px;
+            font-weight: 700;
+            text-align: center;
+            padding: 6px;
+            margin: 0 auto 6px auto;
+        }
+
     </style>
 </head>
 <body>
@@ -341,12 +382,21 @@
         <div class="cv-header">
             <!-- QR Codes -->
             <div class="qr-codes-header">
+                <!-- Website QR: replace src with your PNG file or URL -->
                 <div class="qr-code-box">
-                    <div class="qr-placeholder-small">WEBSITE<br>QR</div>
+                    <a href="qr-website.png" target="_blank" aria-label="Open website QR in new tab">
+                        <img class="qr-img-small" src="/Users/kristinahanxhara/Desktop/KristinaCV/Website-QR-Code.png" alt="Website QR code" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
+                    </a>
+                    <div class="img-missing" style="display:none;">Place<br>qr-website.png</div>
                     <div class="qr-label-small">Portfolio</div>
                 </div>
+
+                <!-- Chatbot QR: replace src with your PNG file or URL -->
                 <div class="qr-code-box">
-                    <div class="qr-placeholder-small">CHATBOT<br>QR</div>
+                    <a href="qr-chatbot.png" target="_blank" aria-label="Open chatbot QR in new tab">
+                        <img class="qr-img-small" src="/Users/kristinahanxhara/Desktop/KristinaCV/Chatbot-QR-Code.png" alt="Chatbot QR code" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
+                    </a>
+                    <div class="img-missing" style="display:none;">Place<br>qr-chatbot.png</div>
                     <div class="qr-label-small">AI Chat</div>
                 </div>
             </div>
@@ -359,7 +409,7 @@
                 <span>📱 07497391831</span>
                 <span>🔗 LinkedIn</span>
             </div>
-        </div>
+        </div>                              
 
         <!-- Main Content -->
         <div class="cv-content">
@@ -564,5 +614,11 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Small script to toggle missing-image placeholders when onerror triggers.
+        // The <img onerror> calls hide the image and reveal the next .img-missing element.
+        // No-js fallback: placeholder boxes are visible in CSS if you prefer.
+    </script>
 </body>
 </html>
