@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Generate PDFs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #00bfb3 0%, #00d4c8 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #00bfb3;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 36px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .step-card {
+            background: #f8f9fa;
+            border-left: 5px solid #00bfb3;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .step-number {
+            background: #00bfb3;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+
+        .step-title {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .step-content {
+            margin-left: 55px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .file-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00bfb3, #00d4c8);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px 10px 10px 0;
+            transition: all 0.3s;
+        }
+
+        .file-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 191, 179, 0.4);
+        }
+
+        .settings-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #00bfb3;
+            margin: 15px 0;
+        }
+
+        .settings-box h4 {
+            color: #00bfb3;
+            margin-bottom: 15px;
+        }
+
+        .settings-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .settings-box li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .settings-box li:last-child {
+            border-bottom: none;
+        }
+
+        .settings-box strong {
+            color: #00bfb3;
+            display: inline-block;
+            width: 150px;
+        }
+
+        .important {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .important strong {
+            color: #856404;
+        }
+
+        .success {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #155724;
+        }
+
+        .keyboard-key {
+            display: inline-block;
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            margin: 0 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📄 PDF Generation Guide</h1>
+        <p class="subtitle">Create professional PDFs in 3 easy steps</p>
+
+        <div class="step-card">
+            <div class="step-title">
+                <span class="step-number">1</span>
+                <span>Open the File in Google Chrome</span>
+            </div>
+            <div class="step-content">
+                <p><strong>Choose which file you want to convert:</strong></p>
+                <a href="cv-updated.html" class="file-button" target="_blank">📄 Open CV</a>
+                <a href="flyer.html" class="file-button" target="_blank">📋 Open Flyer</a>
+                
+                <div class="important">
+                    <strong>💡 Tip:</strong> Use Google Chrome for best results! Other browsers may not render colors correctly.
+                </div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-title">
+                <span class="step-number">2</span>
+                <span>Open Print Dialog</span>
+            </div>
+            <div class="step-content">
+                <p><strong>Press the keyboard shortcut:</strong></p>
+                <p style="margin: 15px 0;">
+                    <span style="font-size: 18px;">
+                        Windows: <span class="keyboard-key">Ctrl</span> + <span class="keyboard-key">P</span>
+                        <br><br>
+                        Mac: <span class="keyboard-key">Cmd</span> + <span class="keyboard-key">⌘</span> + <span class="keyboard-key">P</span>
+                    </span>
+                </p>
+                <p>Or click the menu (⋮) and select "Print"</p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-title">
+                <span class="step-number">3</span>
+                <span>Configure Print Settings</span>
+            </div>
+            <div class="step-content">
+                <p><strong>Use these exact settings:</strong></p>
+                
+                <div class="settings-box">
+                    <h4>🎨 For COLOR PDF (Recommended)</h4>
+                    <ul>
+                        <li><strong>Destination:</strong> Save as PDF</li>
+                        <li><strong>Pages:</strong> All</li>
+                        <li><strong>Layout:</strong> Portrait</li>
+                        <li><strong>Color:</strong> ✅ Color (not Grayscale!)</li>
+                        <li><strong>Margins:</strong> Default</li>
+                        <li><strong>Scale:</strong> 100%</li>
+                        <li><strong>Options:</strong> ✅ Background graphics</li>
+                    </ul>
+                </div>
+
+                <div class="settings-box">
+                    <h4>⚫ For BLACK & WHITE PDF</h4>
+                    <ul>
+                        <li><strong>Destination:</strong> Save as PDF</li>
+                        <li><strong>Pages:</strong> All</li>
+                        <li><strong>Layout:</strong> Portrait</li>
+                        <li><strong>Color:</strong> ✅ Grayscale</li>
+                        <li><strong>Margins:</strong> Default</li>
+                        <li><strong>Scale:</strong> 100%</li>
+                        <li><strong>Options:</strong> ✅ Background graphics</li>
+                    </ul>
+                </div>
+
+                <div class="important">
+                    <strong>⚠️ CRITICAL:</strong> Make sure "Background graphics" is checked! Otherwise colors won't appear.
+                </div>
+
+                <p style="margin-top: 20px;"><strong>Then click the "Save" button and choose where to save your PDF.</strong></p>
+            </div>
+        </div>
+
+        <div class="success">
+            <h3 style="margin-bottom: 10px;">🎉 That's It!</h3>
+            <p>Your PDF is ready to print or email. Open it to make sure everything looks good before printing multiple copies.</p>
+        </div>
+
+        <div class="important">
+            <h4 style="margin-bottom: 10px;">📋 Recommended File Names:</h4>
+            <ul style="margin-top: 10px;">
+                <li>CV: <code>Kristina_Hanxhara_CV.pdf</code></li>
+                <li>Flyer: <code>Kristina_Hanxhara_Flyer.pdf</code></li>
+            </ul>
+        </div>
+
+        <div class="step-card">
+            <div class="step-title">
+                <span style="font-size: 30px; margin-right: 15px;">🖨️</span>
+                <span>Printing Tips</span>
+            </div>
+            <div class="step-content">
+                <ul style="line-height: 2;">
+                    <li>✅ <strong>Use high-quality paper</strong> (24lb or higher) for CV</li>
+                    <li>✅ <strong>Print in color</strong> for best impression</li>
+                    <li>✅ <strong>Print one test page</strong> first to check quality</li>
+                    <li>✅ <strong>For flyer:</strong> glossy paper looks professional</li>
+                    <li>✅ <strong>Check QR codes</strong> scan properly if you added them</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px solid #eee;">
+            <p style="color: #666; font-size: 14px;">
+                Having trouble? Make sure you're using <strong>Google Chrome</strong> and have <strong>"Background graphics"</strong> enabled in print settings.
+            </p>
+            <p style="margin-top: 20px;">
+                <a href="index.html" class="file-button">← Back to Website</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
