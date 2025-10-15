@@ -1,188 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title>Kristina Hanxhara - CV</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* ---------- Reset & base ---------- */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html,body { height: 100%; }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f5f5f5;
-            color: #222;
-            padding: 12px;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Kristina Hanxhara - CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+        font-family:'Poppins',sans-serif;
+        background:#f5f5f5;
+        color:#222;
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
+        padding:10px;
+    }
 
-        /* ---------- Container ---------- */
-        .cv-container {
-            max-width: 210mm; /* A4 width */
-            margin: 0 auto;
-            background: #fff;
-            box-shadow: 0 8px 28px rgba(0,0,0,0.06);
-            overflow: visible;
-        }
+    /* Container */
+    .cv-container{max-width:210mm;margin:0 auto;background:#fff;box-shadow:0 8px 28px rgba(0,0,0,0.06);overflow:visible}
 
-        /* ---------- Header (compact) ---------- */
-        .cv-header {
-            background: linear-gradient(135deg,#7b68ee 0%,#9a7ee8 100%);
-            color: white;
-            padding: 20px 26px;
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            gap:12px;
-        }
-        .cv-header .left { max-width: 68%; }
-        .cv-header h1 { font-size: 30px; font-weight:800; margin-bottom:4px; letter-spacing:0.6px; }
-        .cv-header .title { font-size:13px; font-weight:600; opacity:0.98; margin-bottom:6px; }
-        .contact-bar { display:flex; gap:12px; font-size:13px; flex-wrap:wrap; align-items:center; }
-        .contact-bar span { display:inline-flex; gap:8px; align-items:center; }
+    /* Header (compact) */
+    .cv-header{
+        background:linear-gradient(135deg,#7b68ee 0%,#9a7ee8 100%);
+        color:#fff;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+    }
+    .cv-header .left{max-width:68%}
+    .cv-header h1{font-size:30px;font-weight:800;margin-bottom:4px;letter-spacing:0.6px}
+    .cv-header .title{font-size:13px;font-weight:600;opacity:.98;margin-bottom:6px}
+    .contact-bar{display:flex;gap:12px;font-size:13px;flex-wrap:wrap;align-items:center}
+    .contact-bar span{display:inline-flex;gap:8px;align-items:center}
 
-        .qr-codes-header { display:flex; gap:10px; align-items:center; }
-        .qr-code-box { background:#fff; padding:8px; border-radius:8px; width:118px; text-align:center; box-shadow: 0 3px 10px rgba(0,0,0,0.12); }
-        .qr-img-small { width:98px; height:98px; object-fit:contain; display:block; margin:0 auto 6px; border-radius:6px; background:#f0f0f0; }
-        .qr-label-small { font-size:11px; color:#7b68ee; font-weight:700; }
+    .qr-codes-header{display:flex;gap:10px;align-items:center}
+    .qr-code-box{background:#fff;padding:8px;border-radius:8px;width:118px;text-align:center;box-shadow:0 3px 10px rgba(0,0,0,.12)}
+    .qr-img-small{width:98px;height:98px;object-fit:contain;display:block;margin:0 auto 6px;border-radius:6px;background:#f0f0f0}
+    .qr-label-small{font-size:11px;color:#7b68ee;font-weight:700}
 
-        /* ---------- Content (tight) ---------- */
-        .cv-content { padding: 18px 26px 28px; }
-        .cv-section { margin-bottom:16px; }
-        .section-title {
-            color:#7b68ee;
-            font-size:16px;
-            font-weight:700;
-            margin-bottom:8px;
-            display:flex;
-            align-items:center;
-            gap:8px;
-            border-bottom: 2px solid #efeaff;
-            padding-bottom:8px;
-        }
+    /* Content general */
+    .page{padding:18px 22px} /* used to create 3 print pages */
+    .section-title{
+        color:#7b68ee;font-size:16px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px;border-bottom:2px solid #efeaff;padding-bottom:8px
+    }
 
-        /* Short combined profile */
-        .profile-text {
-            line-height:1.6;
-            color:#333;
-            font-size:13.4px;
-        }
-        .highlight-degree {
-            font-weight:700;
-            color:#ff6b9d;
-            background: rgba(255,107,157,0.06);
-            padding:2px 6px;
-            border-radius:4px;
-        }
+    /* Profile (short + highlight) */
+    .profile-text{line-height:1.6;color:#333;font-size:13.4px}
+    .highlight-degree{
+        font-weight:700;color:#ff6b9d;background:rgba(255,107,157,0.06);padding:2px 6px;border-radius:4px
+    }
 
-        /* Core expertise dense */
-        .skills-container {
-            display:grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap:10px;
-        }
-        .skill-group {
-            background:#f8f9fa;
-            padding:10px;
-            border-radius:8px;
-            border-left:3px solid #7b68ee;
-        }
-        .skill-group h3 { color:#7b68ee; font-size:14px; margin-bottom:8px; font-weight:700; }
-        .skill-group ul { list-style:none; padding-left:0; }
-        .skill-group li { font-size:13px; color:#555; padding:4px 0; line-height:1.4; }
-        .skill-group li::before { content:"▸ "; color:#7b68ee; font-weight:700; }
+    /* Core expertise - dense */
+    .skills-container{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .skill-group{background:#f8f9fa;padding:10px;border-radius:8px;border-left:3px solid #7b68ee}
+    .skill-group h3{color:#7b68ee;font-size:14px;margin-bottom:8px;font-weight:700}
+    .skill-group ul{list-style:none;padding-left:0}
+    .skill-group li{font-size:13px;color:#555;padding:4px 0;line-height:1.4}
+    .skill-group li::before{content:"▸ ";color:#7b68ee;font-weight:700}
 
-        /* Experience tight and prevented from splitting */
-        .experience-item {
-            margin-bottom:12px;
-            padding-bottom:10px;
-            border-bottom:1px solid #e6e6e6;
-            page-break-inside:avoid;
-            break-inside:avoid;
-            -webkit-column-break-inside:avoid;
-        }
-        .experience-header { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
-        .experience-title { font-size:15px; font-weight:700; color:#222; }
-        .experience-company { color:#7b68ee; font-weight:600; font-size:13px; margin-top:4px; }
-        .experience-date { background:#e8e4ff; color:#7b68ee; padding:5px 10px; border-radius:12px; font-weight:700; font-size:12px; white-space:nowrap; }
-        .experience-description ul { margin-top:8px; padding-left:18px; }
-        .experience-description li { font-size:13px; color:#555; margin-bottom:6px; line-height:1.45; }
+    /* Experience - compact and avoid splitting inside individual entries */
+    .experience-item{margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #e6e6e6;page-break-inside:avoid;break-inside:avoid;-webkit-column-break-inside:avoid}
+    .experience-header{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+    .experience-title{font-size:15px;font-weight:700;color:#222}
+    .experience-company{color:#7b68ee;font-weight:600;font-size:13px;margin-top:4px}
+    .experience-date{background:#e8e4ff;color:#7b68ee;padding:5px 10px;border-radius:12px;font-weight:700;font-size:12px;white-space:nowrap}
+    .experience-description ul{margin-top:8px;padding-left:18px}
+    .experience-description li{font-size:13px;color:#555;margin-bottom:6px;line-height:1.45}
 
-        /* Portfolio + Education compact blocks */
-        .portfolio-item, .education-item {
-            background:#f8f9fa;
-            padding:12px;
-            border-radius:8px;
-            margin-bottom:12px;
-            page-break-inside:avoid;
-            break-inside:avoid;
-            -webkit-column-break-inside:avoid;
-        }
-        .portfolio-item { border-left:4px solid #00bfb3; }
-        .education-item { border-left:4px solid #ff6b9d; }
-        .portfolio-item h3, .education-item h3 { font-size:15px; margin-bottom:6px; color:#333; }
-        .degree { color:#ff6b9d; font-weight:700; font-size:13.2px; display:block; margin-bottom:6px; }
-        .date { color:#666; font-size:12.5px; display:block; margin-bottom:8px; }
+    /* Portfolio and Education compact */
+    .portfolio-item,.education-item{background:#f8f9fa;padding:12px;border-radius:8px;margin-bottom:12px;page-break-inside:avoid;break-inside:avoid}
+    .portfolio-item{border-left:4px solid #00bfb3}
+    .education-item{border-left:4px solid #ff6b9d}
+    .portfolio-item h3,.education-item h3{font-size:15px;margin-bottom:6px;color:#333}
+    .degree{color:#ff6b9d;font-weight:700;font-size:13.2px;display:block;margin-bottom:6px}
+    .date{color:#666;font-size:12.5px;display:block;margin-bottom:8px}
 
-        .why-text { display:none; } /* Why merged into profile; keep hidden */
+    /* Small placeholder for missing images */
+    .img-missing{width:70px;height:70px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#fff6fb;color:#ff6b9d;font-size:10px;font-weight:700;text-align:center;padding:6px;margin:0 auto 6px}
 
-        /* small placeholder */
-        .img-missing { width:70px; height:70px; display:flex; align-items:center; justify-content:center; border-radius:6px; background:#fff6fb; color:#ff6b9d; font-size:10px; font-weight:700; text-align:center; padding:6px; margin:0 auto 6px; }
+    /* Print button */
+    .print-button{position:fixed;top:12px;right:12px;background:linear-gradient(135deg,#7b68ee,#9a7ee8);color:#fff;border:none;padding:8px 14px;border-radius:18px;font-weight:700;cursor:pointer;z-index:999;box-shadow:0 6px 18px rgba(0,0,0,.12);font-size:13px}
 
-        /* Print button */
-        .print-button {
-            position: fixed;
-            top: 14px;
-            right: 14px;
-            background: linear-gradient(135deg,#7b68ee,#9a7ee8);
-            color:#fff;
-            border:none;
-            padding:8px 14px;
-            border-radius:18px;
-            font-weight:700;
-            cursor:pointer;
-            z-index:999;
-            box-shadow:0 6px 18px rgba(0,0,0,0.12);
-            font-size:13px;
-        }
+    /* Page-break helpers - explicit pages */
+    .page-first{page-break-after:always}
+    .page-second{page-break-after:always}
+    .page-third{page-break-after:always}
 
-        /* Page-break helper to encourage 3 pages */
-        .force-page-break { page-break-after: always; break-after: page; }
+    /* Print rules */
+    @page{size:A4;margin:12mm}
+    @media print{
+        body{background:#fff;padding:0}
+        .cv-container{box-shadow:none;max-width:100%}
+        .print-button{display:none}
+        /* avoid inside-block breaks */
+        .cv-header,.section-title,.experience-item,.portfolio-item,.education-item,.skill-group{page-break-inside:avoid;break-inside:avoid;-webkit-column-break-inside:avoid}
+        /* slightly reduce fonts for print */
+        .profile-text,.experience-description li,.skill-group li{font-size:12.8px}
+        .cv-header h1{font-size:28px}
+        .section-title{font-size:15px}
+    }
 
-        /* Print rules */
-        @page { size:A4; margin: 12mm; }
-        @media print {
-            body { background:#fff; padding:0; }
-            .cv-container { box-shadow:none; max-width:100%; }
-            .print-button { display:none; }
-            /* Avoid breaking inside important blocks */
-            .cv-header, .cv-section, .experience-item, .portfolio-item, .education-item, .skill-group {
-                page-break-inside: avoid;
-                break-inside: avoid;
-                -webkit-column-break-inside: avoid;
-            }
-            /* Slightly reduce fonts for print */
-            .profile-text, .experience-description li, .skill-group li { font-size:12.8px; }
-            .cv-header h1 { font-size:28px; }
-            .section-title { font-size:15px; }
-        }
-
-        /* Responsive */
-        @media (max-width:720px) {
-            .cv-header { flex-direction:column; text-align:center; padding:14px; gap:8px; }
-            .skills-container { grid-template-columns:1fr; }
-            .qr-code-box { width:100px; padding:6px; }
-            .qr-img-small, .img-missing { width:86px; height:86px; }
-        }
-    </style>
+    /* Responsive */
+    @media(max-width:720px){
+        .cv-header{flex-direction:column;text-align:center;padding:14px;gap:8px}
+        .skills-container{grid-template-columns:1fr}
+        .qr-code-box{width:100px;padding:6px}
+        .qr-img-small,.img-missing{width:86px;height:86px}
+    }
+</style>
 </head>
 <body>
-    <button class="print-button" onclick="window.print()">🖨️ Print CV</button>
+<button class="print-button" onclick="window.print()">🖨️ Print CV</button>
+<div class="cv-container">
 
-    <div class="cv-container">
-        <!-- Header -->
+    <!-- PAGE 1: header + profile + core expertise -->
+    <div class="page page-first">
         <div class="cv-header">
             <div class="left">
                 <h1>KRISTINA HANXHARA</h1>
@@ -199,210 +130,200 @@
                 <div class="qr-codes-header">
                     <div class="qr-code-box">
                         <img class="qr-img-small" src="./Website-QR-Code.png" alt="Website QR" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <div class="img-missing" style="display:none;">Place<br>qr-website.png</div>
+                        <div class="img-missing" style="display:none">Place<br>qr-website.png</div>
                         <div class="qr-label-small">Portfolio</div>
                     </div>
 
                     <div class="qr-code-box">
                         <img class="qr-img-small" src="./Chatbot-QR-Code.png" alt="Chatbot QR" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <div class="img-missing" style="display:none;">Place<br>qr-chatbot.png</div>
+                        <div class="img-missing" style="display:none">Place<br>qr-chatbot.png</div>
                         <div class="qr-label-small">AI Chat</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Main content -->
-        <div class="cv-content">
+        <div class="page-content">
+            <div class="section-title">👤 PROFESSIONAL PROFILE</div>
+            <p class="profile-text">
+                Practical AI developer building useful systems—chatbots, automation tools and AI-powered websites—that
+                improve customer experience and business outcomes. Currently completing a <span class="highlight-degree">Master's in Data Science and AI</span>.
+                I combine hands-on engineering (Python, APIs, web) with product-focused design to deliver measurable results.
+            </p>
 
-            <!-- PROFESSIONAL PROFILE (short + WHY merged) -->
-            <div class="cv-section">
-                <div class="section-title">👤 PROFESSIONAL PROFILE</div>
-                <p class="profile-text">
-                    Practical AI developer building useful systems—chatbots, automation tools and AI-powered websites—that
-                    improve customer experience and business outcomes. Currently completing a <span class="highlight-degree">Master's in Data Science and AI</span>.
-                    I combine hands-on engineering (Python, APIs, web) with product-focused design to deliver measurable results.
+            <div style="height:10px"></div>
+
+            <div class="section-title" style="margin-top:14px">🚀 CORE EXPERTISE</div>
+            <div class="skills-container" aria-hidden="false">
+                <div class="skill-group">
+                    <h3>AI Development</h3>
+                    <ul>
+                        <li>Chatbots & Virtual Assistants</li>
+                        <li>Automation Tools</li>
+                        <li>AI-Powered Websites</li>
+                        <li>OpenAI & LLM Integration</li>
+                        <li>Google APIs</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group">
+                    <h3>Technical</h3>
+                    <ul>
+                        <li>Python & JavaScript</li>
+                        <li>HTML/CSS, Frontend</li>
+                        <li>SQL & Data Analysis</li>
+                        <li>API Design & Deployment</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group">
+                    <h3>Applications</h3>
+                    <ul>
+                        <li>Customer Service Automation</li>
+                        <li>Content Generation</li>
+                        <li>Booking & Scheduling Widgets</li>
+                        <li>Telegram & Web Bots</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>Albanian (Native)</li>
+                        <li>English (Fluent)</li>
+                        <li>German (Fluent)</li>
+                        <li>Spanish (Fluent)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end page 1 -->
+
+    <!-- PAGE 2: PROFESSIONAL EXPERIENCE (all items) -->
+    <div class="page page-second">
+        <div class="page-content">
+            <div class="section-title">💼 PROFESSIONAL EXPERIENCE</div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Panel Quality Principal Analyst</div>
+                        <div class="experience-company">GfK, London</div>
+                    </div>
+                    <div class="experience-date">Sep 2022 – Present</div>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li>Design and monitor representative samples for retail analysis to ensure high data quality.</li>
+                        <li>Build dashboards and monitoring systems to surface issues and KPIs to stakeholders.</li>
+                        <li>Collaborate with teams to translate data insights into business actions.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Recruitment Consultant & Payroll Admin</div>
+                        <div class="experience-company">Team Support, London</div>
+                    </div>
+                    <div class="experience-date">May 2021 – Jun 2022</div>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li>Maintained recruitment databases and streamlined processes to improve efficiency.</li>
+                        <li>Sourced and matched candidates to client needs in fast-paced environments.</li>
+                        <li>Handled payroll admin tasks and supported operations across teams.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Market Research Interviewer</div>
+                        <div class="experience-company">GfK, Tirana</div>
+                    </div>
+                    <div class="experience-date">May 2017 – Sep 2018</div>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li>Conducted multilingual interviews (German) and ensured data collection accuracy.</li>
+                        <li>Delivered projects on time while maintaining quality under tight schedules.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end page 2 -->
+
+    <!-- PAGE 3: PORTFOLIO then EDUCATION -->
+    <div class="page page-third">
+        <div class="page-content">
+            <div class="section-title">💼 PORTFOLIO HIGHLIGHTS</div>
+
+            <div class="portfolio-item">
+                <h3>Vila Falo Resort Website</h3>
+                <p style="font-size:13px;color:#555;margin-bottom:6px">
+                    Full website for a luxury mountain resort with multilingual content and booking functionality.
+                </p>
+                <div style="font-size:13px;color:#00bfb3;font-weight:700">🔗 www.vilafalo.com</div>
+            </div>
+
+            <div class="portfolio-item">
+                <h3>AI Assistant Chatbot</h3>
+                <p style="font-size:13px;color:#555">
+                    LLM-powered assistant integrated into websites to answer questions about services and availability.
                 </p>
             </div>
 
-            <!-- CORE EXPERTISE (aim to fit first page) -->
-            <div class="cv-section">
-                <div class="section-title">🚀 CORE EXPERTISE</div>
-                <div class="skills-container">
-                    <div class="skill-group">
-                        <h3>AI Development</h3>
-                        <ul>
-                            <li>Chatbots & Virtual Assistants</li>
-                            <li>Automation Tools</li>
-                            <li>AI-Powered Websites</li>
-                            <li>OpenAI & LLM Integration</li>
-                            <li>Google APIs</li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-group">
-                        <h3>Technical</h3>
-                        <ul>
-                            <li>Python & JavaScript</li>
-                            <li>HTML/CSS, Frontend</li>
-                            <li>SQL & Data Analysis</li>
-                            <li>API Design & Deployment</li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-group">
-                        <h3>Applications</h3>
-                        <ul>
-                            <li>Customer Service Automation</li>
-                            <li>Content Generation</li>
-                            <li>Booking & Scheduling Widgets</li>
-                            <li>Telegram & Web Bots</li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-group">
-                        <h3>Languages</h3>
-                        <ul>
-                            <li>Albanian (Native)</li>
-                            <li>English (Fluent)</li>
-                            <li>German (Fluent)</li>
-                            <li>Spanish (Fluent)</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="portfolio-item">
+                <h3>Customer Service Chatbot</h3>
+                <p style="font-size:13px;color:#555">
+                    Website chatbot that reduced inbound email support by ~40%; multilingual and easy to integrate.
+                </p>
             </div>
 
-            <!-- PROFESSIONAL EXPERIENCE (first two items) -->
-            <div class="cv-section">
-                <div class="section-title">💼 PROFESSIONAL EXPERIENCE</div>
+            <div style="height:8px"></div>
 
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Panel Quality Principal Analyst</div>
-                            <div class="experience-company">GfK, London</div>
-                        </div>
-                        <div class="experience-date">Sep 2022 – Present</div>
-                    </div>
-                    <div class="experience-description">
-                        <ul>
-                            <li>Design and monitor representative samples for retail analysis to ensure high data quality.</li>
-                            <li>Build dashboards and monitoring systems to surface issues and KPIs to stakeholders.</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="section-title" style="margin-top:12px">🎓 EDUCATION</div>
 
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Recruitment Consultant & Payroll Admin</div>
-                            <div class="experience-company">Team Support, London</div>
-                        </div>
-                        <div class="experience-date">May 2021 – Jun 2022</div>
-                    </div>
-                    <div class="experience-description">
-                        <ul>
-                            <li>Maintained recruitment databases and streamlined processes to improve efficiency.</li>
-                            <li>Sourced and matched candidates to client needs in fast-paced environments.</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="education-item">
+                <h3>Master of Science, Data Science and Artificial Intelligence</h3>
+                <span class="degree">University of Liverpool</span>
+                <span class="date">April 2024 – Present</span>
+                <ul style="margin-top:8px;padding-left:18px">
+                    <li>Practical AI applications: chatbot development, automated systems.</li>
+                    <li>Focus on Python, APIs and deployable web AI solutions.</li>
+                </ul>
             </div>
 
-            <!-- Force page break here to help create 3-page output -->
-            <div class="force-page-break"></div>
-
-            <!-- PROFESSIONAL EXPERIENCE (remaining item(s)) -->
-            <div class="cv-section">
-                <div class="section-title" style="margin-top:0">💼 PROFESSIONAL EXPERIENCE (cont.)</div>
-
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Market Research Interviewer</div>
-                            <div class="experience-company">GfK, Tirana</div>
-                        </div>
-                        <div class="experience-date">May 2017 – Sep 2018</div>
-                    </div>
-                    <div class="experience-description">
-                        <ul>
-                            <li>Conducted multilingual interviews (German) and ensured data collection accuracy.</li>
-                            <li>Delivered projects on time while maintaining quality in demanding schedules.</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="education-item">
+                <h3>Bachelor's in Business Informatics (with High Honors)</h3>
+                <span class="degree">University of Korca "Fan Noli", Albania</span>
+                <span class="date">October 2018 – October 2021</span>
+                <ul style="margin-top:8px;padding-left:18px">
+                    <li>Thesis: "Web Technologies for Business Automation".</li>
+                    <li>Graduated top of class.</li>
+                </ul>
             </div>
 
-            <!-- PORTFOLIO HIGHLIGHTS (before education) -->
-            <div class="cv-section">
-                <div class="section-title">💼 PORTFOLIO HIGHLIGHTS</div>
-
-                <div class="portfolio-item">
-                    <h3>Vila Falo Resort Website</h3>
-                    <p style="font-size:13px;color:#555;margin-bottom:6px;">
-                        Full website for a luxury mountain resort with multilingual content and booking functionality.
-                    </p>
-                    <div style="font-size:13px;color:#00bfb3;font-weight:700;">🔗 www.vilafalo.com</div>
-                </div>
-
-                <div class="portfolio-item">
-                    <h3>AI Assistant Chatbot</h3>
-                    <p style="font-size:13px;color:#555;">
-                        LLM-powered assistant integrated into websites to answer questions about services and availability.
-                    </p>
-                </div>
-
-                <div class="portfolio-item">
-                    <h3>Customer Service Chatbot</h3>
-                    <p style="font-size:13px;color:#555;">
-                        Website chatbot that reduced inbound email support by ~40%; multilingual and easy to integrate.
-                    </p>
-                </div>
+            <div class="education-item">
+                <h3>Technical Certifications</h3>
+                <ul style="margin-top:8px;padding-left:18px">
+                    <li>Front-End Development (HTML, CSS, JavaScript) – ATC, Albania</li>
+                    <li>Finance 5, AlphaWeb – TCT, Albania</li>
+                </ul>
             </div>
+        </div>
+    </div> <!-- end page 3 -->
 
-            <!-- Force page break so Education appears on last page -->
-            <div class="force-page-break"></div>
+</div> <!-- end cv-container -->
 
-            <!-- EDUCATION (last page) -->
-            <div class="cv-section">
-                <div class="section-title">🎓 EDUCATION</div>
-
-                <div class="education-item">
-                    <h3>Master of Science, Data Science and Artificial Intelligence</h3>
-                    <span class="degree">University of Liverpool</span>
-                    <span class="date">April 2024 – Present</span>
-                    <ul style="margin-top:8px;padding-left:18px;">
-                        <li>Practical AI applications: chatbot development, automated systems.</li>
-                        <li>Focus on Python, APIs, and deployable web AI solutions.</li>
-                    </ul>
-                </div>
-
-                <div class="education-item">
-                    <h3>Bachelor's in Business Informatics (with High Honors)</h3>
-                    <span class="degree">University of Korca "Fan Noli", Albania</span>
-                    <span class="date">October 2018 – October 2021</span>
-                    <ul style="margin-top:8px;padding-left:18px;">
-                        <li>Thesis: "Web Technologies for Business Automation".</li>
-                        <li>Graduated top of class.</li>
-                    </ul>
-                </div>
-
-                <div class="education-item">
-                    <h3>Technical Certifications</h3>
-                    <ul style="margin-top:8px;padding-left:18px;">
-                        <li>Front-End Development (HTML, CSS, JavaScript) – ATC, Albania</li>
-                        <li>Finance 5, AlphaWeb – TCT, Albania</li>
-                    </ul>
-                </div>
-            </div>
-
-        </div> <!-- end cv-content -->
-    </div> <!-- end cv-container -->
-
-    <script>
-        // No JS required for print; img onerror reveals placeholders already inlined.
-    </script>
+<script>
+    // Images have onerror attributes to show placeholders if missing.
+</script>
 </body>
 </html>
+
 
 
